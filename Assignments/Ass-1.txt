@@ -1,0 +1,9 @@
+Q1. Explain the features of python.
+A.
+● It is open source and is intended to be publicly accessible, anybody can view, alter, and distribute the code as they see appropriate.
+● Python is free for anyone to use and distribute (commercially or non-commercially), so any individual or company can use it without paying license fees.
+● It can run on a variety of platforms, for instance, Windows, Mac, Linux, etc. We do not have to write separate Python code for different platforms.
+● It is also portable. For instance, if we already have Python code written for Windows and want to execute it on Linux, Unix, or Mac, we can do so without making any changes to the code.
+● Python code uses indentation instead of curly braces so it is very simple to read.
+● In Python, we do not need to declare the data types of the variables which we define.
+

@@ -1,0 +1,2 @@
+Q. Write a command to check version of python on command prompt.
+A. python --version
