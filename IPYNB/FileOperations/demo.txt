@@ -1,1 +1,1 @@
-Hello how are you?
+this is the new content of file. Previous content is now deleted.this is the new content of file. Previous content is not deleted.
