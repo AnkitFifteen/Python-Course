@@ -23,9 +23,11 @@ def demo_operator():
 def sample_text_operator():
     occurrence = 0
     word_to_search = str(input("Enter the word to search for: "))
-    fileContents = open(sample_textFilePath, "r").read()
+    sample_text = open(sample_textFilePath, "r")
+    fileContents = sample_text.read()
     words_list = fileContents.split(" ")
     occurrence = words_list.count(word_to_search)
     print("Occurrence of", word_to_search, "in file =", occurrence)
+    sample_text.close()
 
 sample_text_operator()
