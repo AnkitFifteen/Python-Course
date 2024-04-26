@@ -1,0 +1,15 @@
+question -> Hw r u?
+OR
+how are you?
+
+required response -> 
+
+food
+quality
+quantity
+biryani - 1
+dosa - 2
+samosa - 3
+
+
+#By 3rd May submit

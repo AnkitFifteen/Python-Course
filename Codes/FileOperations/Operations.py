@@ -32,13 +32,13 @@ def sample_text_operator():
 
 def count_each_character_occurrence():
     a = "Hello. This is my new pen"
-    char_list = dict()
+    char_count = dict()
     for char in a:
-        if char not in char_list:
-            char_list[char] = 1
+        if char not in char_count:
+            char_count[char] = 1
         else:
-            char_list[char] += 1
-    for char, count in char_list.items():
+            char_count[char] += 1
+    for char, count in char_count.items():
         print("Occurrence of", char, "in the given string =", count)
 
 whatToRun = str(input("List of functions:\n #1 demo_operator()\n #2 sample_text_operator()\n #3 count_each_character_occurrence()\nEnter function number = "))
