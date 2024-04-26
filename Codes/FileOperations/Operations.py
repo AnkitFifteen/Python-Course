@@ -30,4 +30,24 @@ def sample_text_operator():
     print("Occurrence of", word_to_search, "in file =", occurrence)
     sample_text.close()
 
-sample_text_operator()
+def count_each_character_occurrence():
+    a = "Hello. This is my new pen"
+    char_list = dict()
+    for char in a:
+        if char not in char_list:
+            char_list[char] = 1
+        else:
+            char_list[char] += 1
+    for char, count in char_list.items():
+        print("Occurrence of", char, "in the given string =", count)
+
+whatToRun = str(input("List of functions:\n #1 demo_operator()\n #2 sample_text_operator()\n #3 count_each_character_occurrence()\nEnter function number = "))
+
+match whatToRun:
+    case "1":
+        demo_operator()
+    case "2":
+        sample_text_operator()
+    case "3":
+        count_each_character_occurrence()
+    case _: print("Wrong option entered.")
