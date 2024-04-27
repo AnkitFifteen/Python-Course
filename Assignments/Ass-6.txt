@@ -1,0 +1,15 @@
+# write a program that receives 3 sets of values
+# of p, n, and r and calculates simple interest for each
+
+list_of_tuples = list()
+list_of_tuples.insert(0, (13,59,46))
+list_of_tuples.insert(1, (9,15,40))
+list_of_tuples.insert(2, (12,59,47))
+
+def calculate_simple_interest(list_of_tuples):
+    set_number = 1
+    for value in list_of_tuples:
+        print("Simple interest for set", set_number, "is", (value[0]*value[1]*value[2])/100)
+        set_number += 1
+
+calculate_simple_interest(list_of_tuples)

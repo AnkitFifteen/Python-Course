@@ -1,0 +1,8 @@
+Q. Write a program that uses a while loop to add up all the even numbers between 100 and 200.
+A.
+    max_find, sum = 100, 0
+    while max_find < 200:
+        max_find += 2
+        sum += max_find
+
+    print("Sum of all even numbers between 100 and 200 is", sum)
