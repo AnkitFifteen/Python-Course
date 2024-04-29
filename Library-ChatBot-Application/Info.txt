@@ -13,3 +13,36 @@ samosa - 3
 
 
 #By 3rd May submit
+
+https://library.sjsu.edu/
+
+initial messages
+
+Hi there! I’m Kingbot, your library’s after-hours chatbot. 🤖
+
+I’m still learning, but feel free to ask me your general questions about the library and its resources!
+
+What brings you in? 😁
+
+initial options
+
+- See Live Chat hours
+
+Live Chat Hours:                                                                                              
+Mon - Thu: 9am - 7pm
+Fri: 8am - 5pm
+Sat - Sun: 1pm - 5pm
+
+You can still email a librarian using our ticket system or find the list of subject librarians below:
+
+
+
+- Contact a Librarian
+- Research Help (Guides and Databases)
+- Borrowing Books & Returns
+
+default message after each response
+
+Did I help you find what you were looking for?
+Yes No
+
