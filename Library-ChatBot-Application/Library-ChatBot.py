@@ -1,40 +1,32 @@
 '''
-If no answer found in oracle show M1
-
-    #M1.Sorry, I didn’t quite understand that 😓. 
-        Reach a librarian using following modes:
-        (1) Call/WhatsApp at +91 8451905730 during operating
-            hours(10 A.M. to 5 P.M.).
-        (2) eMail at: care@porschelibrary.in
+Conversation #1
+    How to borrow book?
+    Do you have history book?
+    List all genres of books.
+    What is the cost of 'Alice in wonderland'?
+    What are the contents of book 'M.L. Khanna Mathematics'?
+    What is the length of book 'Bhagvad Geeta by Chinmayananda'?
+    Do you have digital copy of 'Game of thrones' books?
+    How much does it cost?
+    Is it available in Hindi language?
+    Okay thanks!
     
-    #O1.Borrowing Books and Returns
-    #R1.Interested in checking out books from the library? 
-        All you need is your Aadhaar card! Loan periods are as follows: 
-            Items are due 16 weeks from date of checkout, 5 renewals.
-            
-    #O2.Library Fine Policy
-    #R2. There are no daily fines for Porsche library print materials, 
-         but they will be considered lost at 14 days overdue and you will 
-         be billed the replacement cost of ₹9177.80 per item.
-         
-    #O3.About Us!
-    #R3. The library in the Tower Building was expanded in 1942, and the
-        Library Annex was built in 1956.
-        In a unique partnership, the Porsche Library houses both the old Varmora 
-        Library Building and the new Varma Library branch. Together it stands for  
-        “Por-shuh.” a.k.a. varma and varmora.
-         
-    #O4.Reserve a reading room
-    #R4.Porsche library offers private and reservable reading rooms.
-        Reading rooms are located on the 2nd, 3rd, 6th, 7th, and 8th floors 
-        of the Porsche Library.
-        You can reserve a room for a maximum of two hours per day and up to 4 
-        days in advance. Feel free to enter the reading room you've reserved 
-        directly—no check-in or key required.
-        Follow link to book: https://booking.porschelibrary.in/reserve/reading
+Conversation #2
+    What are your rules on missing pages?
+    I have accidentally lost some pages.
+    
 '''
 
 oracle = [
+    #Context Level 0 (Selection Phase)
+    {"context": "", "question": "abcdefghijklmnopqrstuvwxyz", "answer": "which book", "new_context": "Greeting"},
+    {"context": "", "question": "hello", "answer": "Hi!", "new_context": ""},
+    {"context": "", "question": "life", "answer": "Yes, we have a life insurance!", "new_context": "Physical_Books"},
+    {"context": "", "question": "car", "answer": "Yes, we have an auto insurance!", "new_context": "Digital_Books"},
+    {"context": "", "question": "auto", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
+    {"context": "", "question": "vehicle", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
+
+    
     #Context Level 0 (Selection Phase)
     {"context": "", "question": "abcdefghijklmnopqrstuvwxyz", "answer": "which book", "new_context": ""},
     {"context": "", "question": "hello", "answer": "Hi!", "new_context": ""},
@@ -102,4 +94,4 @@ while True:
     
         if not got_answer:
             print("Bot:", "Sorry, I didn't get it.")
-            
+        
