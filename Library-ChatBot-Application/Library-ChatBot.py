@@ -18,40 +18,27 @@ Conversation #2
 '''
 
 oracle = [
-    #Context Level 0 (Selection Phase)
-    {"context": "", "question": "abcdefghijklmnopqrstuvwxyz", "answer": "which book", "new_context": "Greeting"},
     {"context": "", "question": "hello", "answer": "Hi!", "new_context": ""},
-    {"context": "", "question": "life", "answer": "Yes, we have a life insurance!", "new_context": "Physical_Books"},
-    {"context": "", "question": "car", "answer": "Yes, we have an auto insurance!", "new_context": "Digital_Books"},
-    {"context": "", "question": "auto", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
-    {"context": "", "question": "vehicle", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
-
-    
-    #Context Level 0 (Selection Phase)
-    {"context": "", "question": "abcdefghijklmnopqrstuvwxyz", "answer": "which book", "new_context": ""},
-    {"context": "", "question": "hello", "answer": "Hi!", "new_context": ""},
+    {"context": "", "question": "hey", "answer": "Hi!", "new_context": ""},
+    {"context": "", "question": "hi", "answer": "Hi!", "new_context": ""},
+    {"context": "", "question": "book", "answer": "Yes we have books in both digital and physical format.", "new_context": "Books"},
     {"context": "", "question": "life", "answer": "Yes, we have a life insurance!", "new_context": "life"},
     {"context": "", "question": "car", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
     {"context": "", "question": "auto", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
     {"context": "", "question": "vehicle", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
-
-    #Selection: Accident
-    #Context Level 1 (Accident assets: Insurance, Accidents, Injuries)
     {"context": "", "question": "accident", "answer": "Oh, we are sorry! Is anyone injured?", "new_context": "accident_injured?"},
+    {"context": "Books", "question": "history", "answer": "Do you want history book?", "new_context": "History_Book"},
+    {"context": "History_Book", "question": "Yes", "answer": "Do you want it in digital or physical format?", "new_context": "History_Book"},
+    {"context": "History_Book", "question": "Digital", "answer": "Okay here you go in digital way", "new_context": "History_Book"},
+    {"context": "History_Book", "question": "Physical", "answer": "Okay here you go in physical way", "new_context": "History_Book"},
     {"context": "accident_injured?", "question": "yes", "answer": "Call 112! This is serious!", "new_context": "accident"},
     {"context": "accident_injured?", "question": "no", "answer": "Please give us the address...", "new_context": "accident_address"},
     {"context": "accident", "question": "help", "answer": "Please give us the address...", "new_context": "accident_address"},
-
-    #Selection: Automobile
-    #Context Level 2 (Automobile assets: Car, Car Model, Car Price)
     {"context": "car", "question": "how much", "answer": "What car do you have?", "new_context": "car_model"},
     {"context": "car_model", "question": "porsche", "answer": "Ah, that's expensive! It will cost you $31!", "new_context": "car"},
     {"context": "car_model", "question": "", "answer": "That's a simple car! It will cost you $28!", "new_context": "car"},
-
-    #Selection: Life
-    #Context Level 3 (Life assets: Insurance)
     {"context": "life", "question": "how much", "answer": "$10", "new_context": "life"},
-]
+   ]
 
 context = "Enter `Menu` to get options."
 
