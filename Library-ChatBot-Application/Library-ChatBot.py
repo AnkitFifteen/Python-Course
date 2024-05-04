@@ -1,19 +1,3 @@
-'''
-Conversation #1
-    How to borrow book?
-    Do you have history book?
-    List all genres of books.   
-    Do you have digital copy of 'Game of thrones' books?
-    How much does it cost?
-    Is it available in Hindi language?
-    Okay thanks!
-    
-Conversation #2
-    What are your rules on missing pages?
-    I have accidentally lost some pages.
-    
-'''
-
 oracle = [
     {"context": "", "question": "hello", "answer": "Hi!", "new_context": ""},
     {"context": "", "question": "borrow book", "answer": "To borrow book you need a valid Aadhaar card.", "new_context": "Books"},
