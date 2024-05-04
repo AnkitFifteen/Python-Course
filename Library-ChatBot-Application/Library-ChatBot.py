@@ -2,10 +2,7 @@
 Conversation #1
     How to borrow book?
     Do you have history book?
-    List all genres of books.
-    What is the cost of 'Alice in wonderland'?
-    What are the contents of book 'M.L. Khanna Mathematics'?
-    What is the length of book 'Bhagvad Geeta by Chinmayananda'?
+    List all genres of books.   
     Do you have digital copy of 'Game of thrones' books?
     How much does it cost?
     Is it available in Hindi language?
@@ -19,30 +16,27 @@ Conversation #2
 
 oracle = [
     {"context": "", "question": "hello", "answer": "Hi!", "new_context": ""},
-    {"context": "", "question": "hey", "answer": "Hi!", "new_context": ""},
-    {"context": "", "question": "hi", "answer": "Hi!", "new_context": ""},
-    {"context": "", "question": "book", "answer": "Yes we have books in both digital and physical format.", "new_context": "Books"},
-    {"context": "", "question": "life", "answer": "Yes, we have a life insurance!", "new_context": "life"},
-    {"context": "", "question": "car", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
-    {"context": "", "question": "auto", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
-    {"context": "", "question": "vehicle", "answer": "Yes, we have an auto insurance!", "new_context": "car"},
-    {"context": "", "question": "accident", "answer": "Oh, we are sorry! Is anyone injured?", "new_context": "accident_injured?"},
-    {"context": "Books", "question": "history", "answer": "Do you want history book?", "new_context": "History_Book"},
-    {"context": "History_Book", "question": "Yes", "answer": "Do you want it in digital or physical format?", "new_context": "History_Book"},
-    {"context": "History_Book", "question": "Digital", "answer": "Okay here you go in digital way", "new_context": "History_Book"},
-    {"context": "History_Book", "question": "Physical", "answer": "Okay here you go in physical way", "new_context": "History_Book"},
-    {"context": "accident_injured?", "question": "yes", "answer": "Call 112! This is serious!", "new_context": "accident"},
-    {"context": "accident_injured?", "question": "no", "answer": "Please give us the address...", "new_context": "accident_address"},
-    {"context": "accident", "question": "help", "answer": "Please give us the address...", "new_context": "accident_address"},
-    {"context": "car", "question": "how much", "answer": "What car do you have?", "new_context": "car_model"},
-    {"context": "car_model", "question": "porsche", "answer": "Ah, that's expensive! It will cost you $31!", "new_context": "car"},
-    {"context": "car_model", "question": "", "answer": "That's a simple car! It will cost you $28!", "new_context": "car"},
-    {"context": "life", "question": "how much", "answer": "$10", "new_context": "life"},
+    {"context": "", "question": "borrow book", "answer": "To borrow book you need a valid Aadhaar card.", "new_context": "Books"},
+    {"context": "Request_Book", "question": "request book", "answer": "Enter name of book for which you want to put request?", "new_context": "Requested_Book"},
+    {"context": "", "question": "book genre", "answer": "Fiction, Science, Historical, Mathematics", "new_context": "Books"},
+    {"context": "", "question": "format of book", "answer": "Yes we have books in both digital and physical format.", "new_context": "Books"},
+    {"context": "", "question": "have digital book", "answer": "Yes we have books in digital format.", "new_context": "Digital_Books"},
+    {"context": "", "question": "want digital book", "answer": "Please go to https://books.porschelibrary.in/buy/ebooks to search/buy.", "new_context": "Digital_Books"},
+    {"context": "", "question": "want Alice in wonderland", "answer": "Okay.", "new_context": "AIW_Book"},
+    {"context": "AIW_Book", "question": "how much cost", "answer": "Rs. 499", "new_context": "AIW_Book"},
+    {"context": "AIW_Book", "question": "available hindi language", "answer": "No.", "new_context": "AIW_Book"},
+    {"context": "AIW_Book", "question": "have digital copy", "answer": "No.", "new_context": "AIW_Book"},
    ]
 
-context = "Enter `Menu` to get options."
+BookRequests = list()
+printMenuMsgOnce = True
+context = ""
 
 while True:
+    if printMenuMsgOnce:
+        print("Enter `Menu` to get options.")
+        printMenuMsgOnce = False
+    
     print("Current topic: ", context)
     question = input("You: ")
     got_answer = False
@@ -64,8 +58,9 @@ while True:
             case _:
                 print("Sorry, I didn’t quite understand that.\nReach a librarian using following modes:\n\t(1) Call/WhatsApp at +91 8451905730 during operating hours(10 A.M. to 5 P.M.).\n\t(2) eMail at: care@porschelibrary.in\n")
     else:
-        if context == "accident_address":
-            address = question
+        if context == "Request_Book":
+            BookRequests.append(question)      #Dumping book requests not found in oracle
+            
     
         for el in oracle:
             if el["context"] == context or el["context"] == "":
