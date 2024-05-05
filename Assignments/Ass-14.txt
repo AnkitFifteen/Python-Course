@@ -1,0 +1,20 @@
+Q. Explain serialization and deserialization with examples
+A. Serialization is the process of converting an object’s state to a byte stream, and deserialization is the reverse process of reconstructing the object from a byte stream. This process of converting objects to a stream of bytes is useful in scenarios where data needs to be stored or transferred from one system to another.
+    In Python, serialization and deserialization can be achieved through several methods. Some of the popular methods are:
+1. JSON
+    JSON (JavaScript Object Notation) is a text-based data format that is used to exchange data between systems.
+    Here’s an example of how to use JSON for serialization and deserialization:
+
+    import json
+
+    #Serialization
+    data = {'a': [1, 2.0, 3, 4+6j], 'b': ('string', u'Unicode string'), 'c': None}
+
+    with open('data.json', 'w') as file:
+        json.dump(data, file)
+
+    #Deserialization
+    with open('data.json', 'r') as file:
+        data = json.load(file)
+
+    print(data)

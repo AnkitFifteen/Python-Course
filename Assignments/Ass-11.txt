@@ -1,0 +1,15 @@
+'''
+Write a program using functions to Compute the monthly payment,
+given the loan amount, number of years and the annual interest rate.
+'''
+
+def paymentpermonth():
+    amount = 600000
+    rate = 6
+    year = 5
+    simple_interest = (amount * rate * year)/100
+    print("Simple interest: ", simple_interest)
+    loandeduction = amount + simple_interest
+    monthlydeduction = loandeduction / (5 * 12)
+    print("Monthly payment: ", monthlydeduction)
+    return monthlydeduction
