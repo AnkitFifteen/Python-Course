@@ -1,0 +1,85 @@
+/workspaces/Python-Course (main) $ /home/codespace/.python/current/bin/python3 /workspaces/Python-Course/Library-ChatBot-Application/Library-ChatBot.py
+Welcome to Porsche library. Enter `Menu` to get options.
+Current topic:
+You: Menu
+ 1. Borrowing Books and Returns
+ 2. Library Fine Policy
+ 3. Reserve a reading room
+ 4. About Us!
+Enter option number: 1
+Interested in checking out books from the library?
+        All you need is your Aadhaar card! Loan periods are as follows:
+        Items are due 16 weeks from date of checkout, 5 renewals.
+
+Current topic:
+You: Menu
+ 1. Borrowing Books and Returns
+ 2. Library Fine Policy
+ 3. Reserve a reading room
+ 4. About Us!
+Enter option number: 2
+There are no daily fines for Porsche library print materials, but they will be considered lost at 14 days overdue and you will be billed the replacement cost of ₹9177.80 per item.
+
+Current topic:
+You: Menu
+ 1. Borrowing Books and Returns
+ 2. Library Fine Policy
+ 3. Reserve a reading room
+ 4. About Us!
+Enter option number: 3
+Porsche library offers private and reservable reading rooms.
+Reading rooms are located on the 2nd, 3rd, 6th, 7th, and 8th floors of the Porsche Library.
+You can reserve a room for a maximum of two hours per day and up to 4 days in advance.
+Feel free to enter the reading room you've reserved directly, no check-in or key required.
+        Follow link to book: https://booking.porschelibrary.in/reserve/reading
+
+Current topic:
+You: Menu
+ 1. Borrowing Books and Returns
+ 2. Library Fine Policy
+ 3. Reserve a reading room
+ 4. About Us!
+Enter option number: 4
+The library in the Tower Building was expanded in 1942, and the Library Annex was built in 1956.
+In a unique partnership, the Porsche Library houses both the old Varmora Library Building and the new Varma Library branch.
+Together it stands for “Por-shuh.” a.k.a. Varma and Varmora.
+
+Current topic:
+You: Hello
+Bot: Hi!
+Current topic:
+You: I want to borrow book
+Bot: To borrow book you need a valid Aadhaar card.
+Current topic:  Books
+You: I want to put in a book request.
+Bot: Enter name of book for which you want to put request?
+Current topic:  Requested_Book
+You: M.L. Khanna Mathematics
+All book requests --> ['M.L. Khanna Mathematics']
+Request submitted.
+Current topic:
+You: What genres of books do you have?
+Bot: Fiction, Science, Historical, Mathematics
+Current topic:  Books
+You: What formats of books do you have?
+Bot: Yes we have books in both digital and physical format.
+Current topic:  Books
+You: I want digital book.
+Bot: Please go to https://books.porschelibrary.in/buy/ebooks to search/buy.
+Current topic:  Digital_Books
+You: I want Game Of Thrones book.
+Bot: Okay.
+Current topic:  GOT_Book
+You: How much is the cost?
+Bot: Rs. 499
+Current topic:  GOT_Book
+You: Is it available in hindi language?
+Bot: No.
+Current topic:  GOT_Book
+You: Do you have digital copy of it?
+Bot: No.
+Current topic:  GOT_Book
+You: okay thanks
+Bot: You are welcome!
+Current topic:  GOT_Book
+You: Please end this chat.

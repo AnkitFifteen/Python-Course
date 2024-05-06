@@ -1,5 +1,6 @@
 oracle = [
     {"context": "", "question": "hello", "answer": "Hi!", "new_context": ""},
+    {"context": "", "question": "thanks", "answer": "You are welcome!", "new_context": ""},
     {"context": "", "question": "borrow book", "answer": "To borrow book you need a valid Aadhaar card.", "new_context": "Books"},
     {"context": "", "question": "book request", "answer": "Enter name of book for which you want to put request?", "new_context": "Requested_Book"},
     {"context": "", "question": "book genre", "answer": "Fiction, Science, Historical, Mathematics", "new_context": "Books"},
