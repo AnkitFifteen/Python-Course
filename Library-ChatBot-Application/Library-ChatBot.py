@@ -6,10 +6,10 @@ oracle = [
     {"context": "", "question": "format of book", "answer": "Yes we have books in both digital and physical format.", "new_context": "Books"},
     {"context": "", "question": "have digital book", "answer": "Yes we have books in digital format.", "new_context": "Digital_Books"},
     {"context": "", "question": "want digital book", "answer": "Please go to https://books.porschelibrary.in/buy/ebooks to search/buy.", "new_context": "Digital_Books"},
-    {"context": "", "question": "want Alice in wonderland", "answer": "Okay.", "new_context": "AIW_Book"},
-    {"context": "AIW_Book", "question": "how much cost", "answer": "Rs. 499", "new_context": "AIW_Book"},
-    {"context": "AIW_Book", "question": "available hindi language", "answer": "No.", "new_context": "AIW_Book"},
-    {"context": "AIW_Book", "question": "have digital copy", "answer": "No.", "new_context": "AIW_Book"},
+    {"context": "", "question": "want game of thrones", "answer": "Okay.", "new_context": "GOT_Book"},
+    {"context": "GOT_Book", "question": "how much cost", "answer": "Rs. 499", "new_context": "GOT_Book"},
+    {"context": "GOT_Book", "question": "available hindi language", "answer": "No.", "new_context": "GOT_Book"},
+    {"context": "GOT_Book", "question": "have digital copy", "answer": "No.", "new_context": "GOT_Book"},
    ]
 
 BookRequests = list()
@@ -44,23 +44,23 @@ while True:
     else:
         if context == "Requested_Book":
             BookRequests.append(question)      #Dumping book requests not found in oracle
-            print(BookRequests)
-    
-        for el in oracle:
-            if el["context"] == context or el["context"] == "":
-                match = True
-                for word in el["question"].split():
-                    if word not in question.lower():
-                        match = False
-                if match:
-                    print("Bot:", el["answer"])
-                    got_answer = True
-                    context = el["new_context"]
-                    break
-    
-        if not got_answer and context != "Requested_Book":
-            print("Bot:", "Sorry, I didn't get it.")
-        
-        if context == "Requested_Book":
+            print("All book requests -->", BookRequests)
             print("Request submitted.")
+            context = ""
+        else:
+            for el in oracle:
+                if el["context"] == context or el["context"] == "":
+                    match = True
+                    for word in el["question"].split():
+                        if word not in question.lower():
+                            match = False
+                    if match:
+                        print("Bot:", el["answer"])
+                        got_answer = True
+                        context = el["new_context"]
+                        break
         
+            if not got_answer and context != "Requested_Book":
+                print("Bot:", "Sorry, I didn't get it.")
+                
+            
