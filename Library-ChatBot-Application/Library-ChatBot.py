@@ -1,7 +1,7 @@
 oracle = [
     {"context": "", "question": "hello", "answer": "Hi!", "new_context": ""},
     {"context": "", "question": "borrow book", "answer": "To borrow book you need a valid Aadhaar card.", "new_context": "Books"},
-    {"context": "Request_Book", "question": "request book", "answer": "Enter name of book for which you want to put request?", "new_context": "Requested_Book"},
+    {"context": "", "question": "book request", "answer": "Enter name of book for which you want to put request?", "new_context": "Requested_Book"},
     {"context": "", "question": "book genre", "answer": "Fiction, Science, Historical, Mathematics", "new_context": "Books"},
     {"context": "", "question": "format of book", "answer": "Yes we have books in both digital and physical format.", "new_context": "Books"},
     {"context": "", "question": "have digital book", "answer": "Yes we have books in digital format.", "new_context": "Digital_Books"},
@@ -42,9 +42,9 @@ while True:
             case _:
                 print("Sorry, I didn’t quite understand that.\nReach a librarian using following modes:\n\t(1) Call/WhatsApp at +91 8451905730 during operating hours(10 A.M. to 5 P.M.).\n\t(2) eMail at: care@porschelibrary.in\n")
     else:
-        if context == "Request_Book":
+        if context == "Requested_Book":
             BookRequests.append(question)      #Dumping book requests not found in oracle
-            
+            print(BookRequests)
     
         for el in oracle:
             if el["context"] == context or el["context"] == "":
@@ -58,6 +58,9 @@ while True:
                     context = el["new_context"]
                     break
     
-        if not got_answer:
+        if not got_answer and context != "Requested_Book":
             print("Bot:", "Sorry, I didn't get it.")
+        
+        if context == "Requested_Book":
+            print("Request submitted.")
         
