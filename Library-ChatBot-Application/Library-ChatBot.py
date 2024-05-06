@@ -18,7 +18,7 @@ context = ""
 
 while True:
     if printMenuMsgOnce:
-        print("Enter `Menu` to get options.")
+        print("Welcome to Porsche library. Enter `Menu` to get options.")
         printMenuMsgOnce = False
     
     print("Current topic: ", context)
