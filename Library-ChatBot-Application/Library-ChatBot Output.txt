@@ -83,3 +83,4 @@ You: okay thanks
 Bot: You are welcome!
 Current topic:  GOT_Book
 You: Please end this chat.
+/workspaces/Python-Course (main) $
