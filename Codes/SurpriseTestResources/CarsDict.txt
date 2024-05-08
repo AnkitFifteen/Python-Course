@@ -1,1 +1,0 @@
-{'Toyota': ('Troy', 25, 'Available'), 'BMW': ('1 Series', 15, 'Available'), 'FIAT': ('124 Spider', 20, 'Available'), 'GMC': ('1500 Club Coupe', 20, 'Available'), 'Jeep': ('M105', 15, 'Available')}
