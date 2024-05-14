@@ -1,6 +1,7 @@
 python --version #3.10.13
 pip install django
 pip install django-admin
+mkdir Django
 cd Django
 mkdir myproject
 cd myproject
@@ -10,3 +11,4 @@ python manage.py startapp myapp
     python manage.py -m startapp myapp
         py manage startapp myapp
             python ma startapp myapp
+python manage.py runserver
