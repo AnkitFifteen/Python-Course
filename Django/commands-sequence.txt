@@ -11,4 +11,5 @@ python manage.py startapp myapp
     python manage.py -m startapp myapp
         py manage startapp myapp
             python manage startapp myapp
+cd ..
 python manage.py runserver

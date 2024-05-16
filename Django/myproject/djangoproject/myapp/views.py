@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime 
 import math
+from django.template import loader
 # Create your views here.
 
 def demo(request):
@@ -17,3 +18,7 @@ def demo(request):
     resp = resp1
 
     return resp
+
+def welcome(request):
+    temp = loader.get_template('demo.html')
+    return HttpResponse(temp.render())

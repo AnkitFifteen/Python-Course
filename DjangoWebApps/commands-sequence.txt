@@ -12,4 +12,5 @@ python manage.py startapp WeatherGreetingApp
     python manage.py -m startapp WeatherGreetingApp
         py manage startapp WeatherGreetingApp
             python manage startapp WeatherGreetingApp
+cd ..
 python manage.py runserver
