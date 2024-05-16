@@ -10,5 +10,5 @@ cd djangoproject
 python manage.py startapp myapp
     python manage.py -m startapp myapp
         py manage startapp myapp
-            python ma startapp myapp
+            python manage startapp myapp
 python manage.py runserver

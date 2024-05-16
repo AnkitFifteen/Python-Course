@@ -1,0 +1,15 @@
+DjangoWebApps
++WeatherGreetingFolder
+++WeatherGreetingProject
++++WeatherGreetingApp
+
+cd DjangoWebApps
+mkdir WeatherGreetingFolder
+cd WeatherGreetingFolder
+django-admin startproject WeatherGreetingProject
+cd WeatherGreetingProject
+python manage.py startapp WeatherGreetingApp
+    python manage.py -m startapp WeatherGreetingApp
+        py manage startapp WeatherGreetingApp
+            python manage startapp WeatherGreetingApp
+python manage.py runserver
