@@ -21,4 +21,15 @@ def demo(request):
 
 def welcome(request):
     temp = loader.get_template('demo.html')
-    return HttpResponse(temp.render())
+    dt = datetime.now()
+    msg = "unknown"
+    if dt.hour < 12:
+        msg = "Good Morning"
+    elif dt.hour < 16 and dt.hour > 12:
+        msg = "Good Afternoon"
+    else:
+        msg = "Good Evening"
+    s1 = {"name":"prachi", "id":2}
+    s2 = {"name":"Ram", "id": 1}
+    student = {'sdict': [s1,s2], "greeting":msg}
+    return HttpResponse(temp.render(student, request))

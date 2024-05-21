@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    This is my html page from templates folder
+    This is my html page from templates folder<br>
+    <!-- Hello {{name}} Good Morning! Your ID number is {{id}} -->
+    {% for i in sdict %}
+    {{i.name}} {{greeting}}<br>
+    {% endfor %}
 </body>
 </html>
