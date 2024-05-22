@@ -31,7 +31,7 @@ def welcome(request):
         msg = "Good Evening"
     s1 = {"name":"prachi", "id":2}
     s2 = {"name":"Ram", "id": 1}
-    student = {'sdict': [s1,s2], "greeting":msg}
+    student = {'sdict': [s1,s2], "greeting":msg, "number":3}
     return HttpResponse(temp.render(student, request))
 
 def top_nav(request):

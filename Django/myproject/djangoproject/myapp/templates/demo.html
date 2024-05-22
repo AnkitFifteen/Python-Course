@@ -15,6 +15,16 @@
         {% for i in sdict %}
         &emsp;{{i.name}} {{greeting}}<br>
         {% endfor %}
+
+        {% if number == 2 %}
+        <h4>&emsp;Number value is 2.</h4>
+        {% else %}
+        <h4>&emsp;Number value is not 2.</h4>
+        {% endif %}
+
+        {% comment %}
+        Hello this is comment section.
+        {% endcomment %}
     </p>
     <div class="square"></div>
 </body>
