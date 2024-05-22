@@ -1,16 +1,21 @@
-{% include 'top-nav.html' with name="Ankit" id="144"%}
+{% include 'top-nav.html' with name="Ankit" reg_no="144" %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static 'firstcss.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    This is my html page from templates folder<br>
-    <!-- Hello {{name}} Good Morning! Your ID number is {{id}} -->
-    {% for i in sdict %}
-    {{i.name}} {{greeting}}<br>
-    {% endfor %}
+    <p> 
+        &emsp;This is my html page from templates folder<br>
+        <!-- Hello {{name}} Good Morning! Your ID number is {{id}} -->
+        {% for i in sdict %}
+        &emsp;{{i.name}} {{greeting}}<br>
+        {% endfor %}
+    </p>
+    <div class="square"></div>
 </body>
 </html>
