@@ -33,3 +33,7 @@ def welcome(request):
     s2 = {"name":"Ram", "id": 1}
     student = {'sdict': [s1,s2], "greeting":msg}
     return HttpResponse(temp.render(student, request))
+
+def top_nav(request):
+    temp = loader.get_template('top-nav.html')
+    return HttpResponse(temp.render())
