@@ -13,3 +13,6 @@ python manage.py startapp myapp
             python manage startapp myapp
 cd ..
 python manage.py runserver
+
+python -m manage makemigrations
+python -m manage migrate
