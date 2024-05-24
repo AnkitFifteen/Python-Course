@@ -24,5 +24,6 @@ urlpatterns = [
     path("home/", views.demo),
     path("welcome/", views.welcome),
     path("top-nav/", views.top_nav),
-    path("register/", views.registration)
+    path("register-student/", views.register_student),
+    path("show-student/", views.show_student)
 ]

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime 
 import math
 from django.template import loader
-from .models import stu
+from .models import Students
 # Create your views here.
 
 def demo(request):
@@ -39,7 +39,7 @@ def top_nav(request):
     temp = loader.get_template('top-nav.html')
     return HttpResponse(temp.render())
 
-def registration(request):
+def register_student(request):
     if request.method == "GET":
         return render(request, "register-student.html")
     elif request.method == "POST":
@@ -47,6 +47,11 @@ def registration(request):
         phoneno = request.POST.get("phonenovalue")
         emailvalue = request.POST.get("emailvalue")
 
-        stuobj = stu(name=firstname, email=emailvalue, phoneno=phoneno)
-        stuobj.save()
+        student_object = Students(name=firstname, email=emailvalue, phoneno=phoneno)
+        student_object.save()
         return HttpResponse("Student Registered Successfully.")
+    
+def show_student(request):
+    if request.method == "GET":
+        student_records = Students.objects.all()
+        return render(request, "show-student.html", {"student_records":student_records})

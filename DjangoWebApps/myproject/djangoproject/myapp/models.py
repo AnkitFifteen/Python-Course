@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class stu(models.Model):
+class Students(models.Model):
     name = models.CharField(max_length=30)
     email = models.EmailField()
     phoneno = models.BigIntegerField()
