@@ -59,5 +59,13 @@ def show_students_records(request):
 def edit_student_record(request, student_id):
     if request.method == "GET":
         student_record = Students.objects.get(id = student_id)
-        print(student_record.name)
         return render(request, "edit-student-record.html", {"student_record":student_record})
+    elif request.method == "POST":
+        studentID = request.POST.get("id")
+        student_record = Students.objects.get(id = student_id)
+        firstname = request.POST.get("firstname")
+        phoneno = request.POST.get("phonenovalue")
+        emailvalue = request.POST.get("emailvalue")
+        student_object = Students(id=studentID, name=firstname, email=emailvalue, phoneno=phoneno)
+
+    
