@@ -67,6 +67,10 @@ def edit_student_record(request, student_id):
         student_record.phoneno = request.POST.get("phonenovalue")
         student_record.email = request.POST.get("emailvalue")
         student_record.save()
-        return HttpResponse("Student Updated Successfully.")
-
+        return render(request, "show-updated-record.html", {"student_record":student_record})
     
+def delete_student_record(request, student_id):
+    if request.method == "GET":
+        student_record = Students.objects.get(id = student_id)
+        student_record.delete()
+        return HttpResponse("Student Record Deleted Successfully.")

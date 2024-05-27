@@ -26,5 +26,6 @@ urlpatterns = [
     path("top-nav/", views.top_nav),
     path("register-student/", views.register_student),
     path("show-students-records/", views.show_students_records),
-    path("edit-student-record/<int:student_id>/", views.edit_student_record)
+    path("edit-student-record/<int:student_id>/", views.edit_student_record),
+    path("delete-student-record/<int:student_id>/", views.delete_student_record)
 ]
