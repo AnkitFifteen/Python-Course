@@ -51,7 +51,12 @@ def register_student(request):
         student_object.save()
         return HttpResponse("Student Registered Successfully.")
     
-def show_student(request):
+def show_students_records(request):
     if request.method == "GET":
         student_records = Students.objects.all()
-        return render(request, "show-student.html", {"student_records":student_records})
+        return render(request, "show-students-records.html", {"student_records":student_records})
+    
+def edit_student_record(request):
+    if request.method == "GET":
+        student_records = Students.objects.all()
+        return render(request, "edit-student-record.html", {"student_records":student_records})

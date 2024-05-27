@@ -25,5 +25,6 @@ urlpatterns = [
     path("welcome/", views.welcome),
     path("top-nav/", views.top_nav),
     path("register-student/", views.register_student),
-    path("show-student/", views.show_student)
+    path("show-students-records/", views.show_students_records),
+    path("edit-student-record/", views.edit_student_record)
 ]

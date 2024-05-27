@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Student Record</title>
 </head>
 <body>
     <table border = "2">
@@ -11,12 +11,16 @@
         <th>Name</th>
         <th>Phone</th>
         <th>eMail</th>
+        <th>Operation 1</th>
+        <th>Operation 2</th>
         {% for student_record in student_records %}
         <tr>
             <td>{{student_record.id}}</td>
             <td>{{student_record.name}}</td>
             <td>{{student_record.phoneno}}</td>
             <td>{{student_record.email}}</td>
+            <td><a href="edit-student-record/{{student_record.id}}/" > Edit </a></td>
+            <td><a href="delete-student-record/{{student_record.id}}/" > Delete </a></td>
         </tr>
         {% endfor %}
     </table>
