@@ -59,5 +59,5 @@ def show_students_records(request):
 def edit_student_record(request, student_id):
     if request.method == "GET":
         student_record = Students.objects.get(id = student_id)
-        #return render(request, {"student": student_object})
-        return render(request, "edit-student-record.html", {"student_records":student_record})
+        print(student_record.name)
+        return render(request, "edit-student-record.html", {"student_record":student_record})
