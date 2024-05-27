@@ -62,10 +62,11 @@ def edit_student_record(request, student_id):
         return render(request, "edit-student-record.html", {"student_record":student_record})
     elif request.method == "POST":
         studentID = request.POST.get("id")
-        student_record = Students.objects.get(id = student_id)
-        firstname = request.POST.get("firstname")
-        phoneno = request.POST.get("phonenovalue")
-        emailvalue = request.POST.get("emailvalue")
-        student_object = Students(id=studentID, name=firstname, email=emailvalue, phoneno=phoneno)
+        student_record = Students.objects.get(id = studentID)
+        student_record.name = request.POST.get("firstname")
+        student_record.phoneno = request.POST.get("phonenovalue")
+        student_record.email = request.POST.get("emailvalue")
+        student_record.save()
+        return HttpResponse("Student Updated Successfully.")
 
     
