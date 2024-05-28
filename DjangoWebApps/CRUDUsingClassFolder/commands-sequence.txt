@@ -14,3 +14,6 @@ python manage.py startapp CRUDUsingClassApp
             python manage startapp CRUDUsingClassApp
 cd ..
 python manage.py runserver
+
+python -m manage makemigrations
+python -m manage migrate
