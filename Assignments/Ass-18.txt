@@ -1,0 +1,5 @@
+Que. How is Django’s code reusability feature different from other frameworks?
+Ans.
+     In Django, we can copy applications from one directory to another using the settings.py file. Developers can copy similar codes from another directory without writing them again. They can write codes only for unique operations. So, it allows for the rapid development of web applications.
+     Furthermore, every distinct concept and/or piece of data should live in one, and only one, place. Django offers many features that allow code reusability. We can use apps, generic views, and template inheritance to avoid repetition in writing codes. As a result, we can improve code quality, maintainability, and collaboration in application development.
+
