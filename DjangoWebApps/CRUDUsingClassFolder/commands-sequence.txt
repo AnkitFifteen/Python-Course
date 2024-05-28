@@ -1,0 +1,16 @@
+DjangoWebApps
++CRUDUsingClassFolder
+++CRUDUsingClassProject
++++CRUDUsingClassApp
+
+cd DjangoWebApps
+mkdir CRUDUsingClassFolder
+cd CRUDUsingClassFolder
+django-admin startproject CRUDUsingClassProject
+cd CRUDUsingClassProject
+python manage.py startapp CRUDUsingClassApp
+    python manage.py -m startapp CRUDUsingClassApp
+        py manage startapp CRUDUsingClassApp
+            python manage startapp CRUDUsingClassApp
+cd ..
+python manage.py runserver
