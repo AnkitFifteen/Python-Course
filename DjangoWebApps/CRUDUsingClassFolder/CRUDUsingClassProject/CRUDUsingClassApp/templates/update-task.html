@@ -18,7 +18,7 @@
             color: #aaa;
         }
     </style>
-    <title>Add Task</title>
+    <title>Update Task</title>
 </head>
 <body>
     <div class="container py-5">
@@ -26,7 +26,7 @@
         <!-- For demo purpose -->
         <div class="row text-center text-white mb-5">
           <div class="col-lg-7 mx-auto">
-            <h1 class="display-4">Add Task</h1>
+            <h1 class="display-4">Update Task</h1>
             </p>
           </div>
         </div>
@@ -37,7 +37,7 @@
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit">Create Task</button>
+                    <button type="submit">Update Task</button>
                 </form>
             </div>
         </div>
