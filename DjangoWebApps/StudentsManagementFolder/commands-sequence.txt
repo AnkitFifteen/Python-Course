@@ -1,0 +1,20 @@
+DjangoWebApps
++StudentsManagementFolder
+-+StudentsManagementProject
+--+StudentsManagementApp
+--+StudentsManagementProject
+
+cd DjangoWebApps
+mkdir StudentsManagementFolder
+cd StudentsManagementFolder
+django-admin startproject StudentsManagementProject
+cd StudentsManagementProject
+python manage.py startapp StudentsManagementApp
+    python manage.py -m startapp StudentsManagementApp
+        py manage startapp StudentsManagementApp
+            python manage startapp StudentsManagementApp
+cd ..
+python manage.py runserver
+
+python -m manage makemigrations
+python -m manage migrate
