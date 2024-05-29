@@ -1,0 +1,288 @@
+1. mkdir myproject
+2. cd myproject
+3. django-admin startproject djangoproject
+4. cd djangoproject
+5. python manage.py startapp myapp
+or py -m manage startapp myapp
+6. In views.py write this code :
+def hello(request):
+    return HttpResponse("hello world")
+
+7. in application create one urls.py file and include following code : 
+from django.contrib import admin
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("hello/", views.hello),
+]
+8. include aplication url file in project urls.py file 
+
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("",include('myapp.urls'))
+]
+
+9. change the view to merge python code with html code 
+def hello(request):
+    #return HttpResponse("hello world")
+    now = datetime.datetime.now()  
+    html = "<html><body><h3>Now time is %s.</h3></body></html>" % now  
+    return HttpResponse(html)    # rendering the template in HttpResponse  
+
+
+10. django template engine
+ view settings.py file for template engine code
+
+add following code in settings.py
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
+
+11. add view to views.py file
+def index(request):
+    template = loader.get_template('index.html') # getting our template  
+    return HttpResponse(template.render())   
+
+12. add path to urls.py
+
+ path('index/', views.index)
+
+13. varaiable in html page 
+
+view page 
+
+name = {  
+        'student':'prachi'  
+    }  
+    return HttpResponse(template.render(name))   
+
+
+html page 
+
+<h3>My Name is: {{ student }}</h3>  
+
+
+14. for loop in template 
+
+view part 
+
+ mymembers = {'name':'prachi','id':'1'}
+    template = loader.get_template('members.html')
+    context = {
+    'mymembers': mymembers,
+    }
+    return HttpResponse(template.render(context, request))
+
+html part 
+
+<ul>
+  {% for x in mymembers.values %}
+    <li>{{ x}} </li>
+  {% endfor %}
+</ul>
+
+
+loop variables 
+
+Loop Variables
+Django has some variables that are available for you inside a loop:
+
+forloop.counter
+forloop.counter0
+forloop.first
+forloop.last
+forloop.parentloop
+forloop.revcounter
+forloop.revcounter0
+
+
+html page
+
+<ul>
+  {% for x in fruits %}
+    <li>{{ forloop.counter }}</li>
+  {% endfor %}
+</ul>
+
+
+15. if loop 
+
+view part
+
+
+def testing(request):
+  template = loader.get_template('template.html')
+  context = {
+    'x': ['Apple', 'Banana', 'Cherry'], 
+    'y': ['Apple', 'Banana', 'Cherry'], 
+  }
+  return HttpResponse(template.render(context, request))  
+
+template.html page
+
+{% if x == y %}
+  <h1>YES</h1>
+{% else %}
+  <h1>NO</h1>
+{% endif %}
+
+
+16. add comments 
+
+{% comment "this was the original welcome message" %}
+    <h1>Welcome ladies and gentlemen</h1>
+{% endcomment %}
+
+17. Django Include 
+
+Include
+The include tag allows you to include a template inside the current template.
+
+This is useful when you have a block of content that is the same for many pages.
+
+ExampleGet your own Django Server
+Example
+templates/mymenu.html:
+
+<div>HOME | {{ me }} | ABOUT | FORUM | {{ sponsor }}</div>
+templates/template.html:
+
+{% include "mymenu.html" with me="TOBIAS" sponsor="W3SCHOOLS" %}
+
+                                
+18. Django - Add Static File
+
+Create Static Folder
+When building web applications, you probably want to add some static files like images or css files.
+
+Start by creating a folder named static in your project, the same place where you created the templates folder:
+
+The name of the folder has to be static.
+
+Add a CSS file in the static folder, the name is your choice, we will call it myfirst.css in this example:
+
+my_tennis_club
+    manage.pyModify the Template
+Now you have a CSS file, with some CSS styling. The next step will be to include this file in a HTML template:
+
+Open the HTML file and add the following:
+
+{% load static %}
+And:
+
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
+ExampleGet your own Django Server
+my_tennis_club/members/templates/template.html:
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
+<body>
+
+{% for x in fruits %}
+  <h1>{{ x }}</h1>
+{% endfor %}
+
+</body>
+</html>
+    my_tennis_club/
+    members/
+        templates/
+        static/
+            myfirst.css
+Open the CSS file and insert the following:
+
+my_tennis_club/members/static/myfirst.css:
+
+body {
+  background-color: lightblue;
+  font-family: verdana;
+}
+
+
+make following changes in settings.py
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static/"),
+)
+
+
+19. Database in MYSQL 
+
+settings.py
+DATABASES = {  
+    'default': {  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'djangoApp',  
+        'USER':'root',  
+        'PASSWORD':'mysql',  
+        'HOST':'localhost',  
+        'PORT':'3306'  
+    }  
+}  
+
+After providing details, check the connection using the migrate command.
+
+$ python3 manage.py migrate  
+This command will create tables for admin, auth, contenttypes, and sessions. 
+
+
+Each Django's model is mapped to a table in the database. So after creating a model, we need to migrate it. 
+
+models.py
+
+from django.db import models  
+class Employee(models.Model):  
+    eid      = models.CharField(max_length=20)  
+    ename    = models.CharField(max_length=100)  
+    econtact = models.CharField(max_length=15)  
+    class Meta:  
+        db_table = "employee"  
+
+python3 manage.py makemigrations  
+
+Now, migrate to reflect the changes into the database.
+
+$ python3 manage.py migrate  
+
+
+
+
+20. Django Model Form 
+
+It is a class which is used to create an HTML form by using the Model. It is an efficient way to create a form without writing HTML code.
+
+Django automatically does it for us to reduce the application development time. For example, suppose we have a model containing various fields, we don't need to repeat the fields in the form file.
+
+For this reason, Django provides a helper class which allows us to create a Form class from a Django model.
+
+
+
+
+
+21. Crud Operations 
+
+create database named djangoapp in mysql in xampp or mysqlworkbeanch
+
+provide the information in settings.py file
+DATABASES = {  
+    'default': {  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'djangoApp',  
+        'USER':'root',  
+        'PASSWORD':'',  
+        'HOST':'localhost',  
+        'PORT':'3306'  
+    }  
+}  
+
+
+check the connection using migrate command
+
+python manage.py migrate  
