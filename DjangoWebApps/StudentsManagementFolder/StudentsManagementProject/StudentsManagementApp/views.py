@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.urls import reverse_lazy
 from .models import Students
 from .forms import RegisterStudentForm
 
