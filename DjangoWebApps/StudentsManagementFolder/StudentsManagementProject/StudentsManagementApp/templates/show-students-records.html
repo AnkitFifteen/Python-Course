@@ -19,12 +19,12 @@
             <td>{{student_record.name}}</td>
             <td>{{student_record.phoneno}}</td>
             <td>{{student_record.email}}</td>
-            <td><a href="{% url 'UpdateTask' task.pk %}">Update this Record</a></td>
-            <td><a href="{% url 'DetailViewTask' task.pk %}">Delete this Record</a></td>
+            <td><a href="{% url 'UpdateStudentRecord' Students.pk %}">Update this Record</a></td>
+            <td><a href="{% url 'DeleteStudentRecord' Students.pk %}">Delete this Record</a></td>
         </tr>
         {% endfor %}
-        <td><a href="{% url 'DetailViewTask' task.pk %}">Register a new student.</a></td>
-        <td><a href="{% url 'DetailViewTask' task.pk %}">View Student Records</a></td>
+        <td><a href="{% url 'RegisterNewStudent' Students.pk %}">Register a new student.</a></td>
+        <td><a href="{% url 'ViewStudentsRecords' Students.pk %}">View Students Records</a></td>
     </table>
 </body>
 </html>
