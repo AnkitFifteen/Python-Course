@@ -17,9 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from CRUDUsingClassApp.views import TaskList
+from CRUDUsingClassApp.views import TaskList, CreateTask
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("show-tasks/", TaskList.as_view(), name = "TaskList")
+    path("show-tasks/", TaskList.as_view(), name = "TaskList"),
+    path("create-task/", CreateTask.as_view(), name = "CreateTask"),
 ]
