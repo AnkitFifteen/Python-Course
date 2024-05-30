@@ -7,7 +7,7 @@ from .forms import RegisterStudentForm
 # Create your views here.
 class ViewStudents(ListView):
     model = Students
-    template_name = "view-students.html"
+    template_name = "show-students-records.html"
     context_object_name = "students_records"
     
 class RegisterStudent(CreateView):
@@ -20,6 +20,7 @@ class UpdateStudent(UpdateView):
     model = Students
     form_class = RegisterStudentForm
     template_name = "edit-student-record.html"
+    context_object_name = "Student"
     success_url = reverse_lazy('ViewStudents')
 
 class DeleteStudent(DeleteView):

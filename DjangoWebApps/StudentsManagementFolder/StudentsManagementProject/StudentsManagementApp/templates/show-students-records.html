@@ -13,18 +13,18 @@
         <th>eMail</th>
         <th>Operation 1</th>
         <th>Operation 2</th>
-        {% for student_record in student_records %}
+        {% for student_record in students_records %}
         <tr>
             <td>{{student_record.id}}</td>
             <td>{{student_record.name}}</td>
             <td>{{student_record.phoneno}}</td>
             <td>{{student_record.email}}</td>
-            <td><a href="{% url 'UpdateStudentRecord' Students.pk %}">Update this Record</a></td>
-            <td><a href="{% url 'DeleteStudentRecord' Students.pk %}">Delete this Record</a></td>
+            <td><a href="{% url 'UpdateStudent' student_record.pk %}">Update this Record</a></td>
+            <td><a href="{% url 'DeleteStudent' student_record.pk %}">Delete this Record</a></td>
         </tr>
         {% endfor %}
-        <td><a href="{% url 'RegisterNewStudent' Students.pk %}">Register a new student.</a></td>
-        <td><a href="{% url 'ViewStudentsRecords' Students.pk %}">View Students Records</a></td>
-    </table>
+    </table><br><br>
+    <a href="{% url 'RegisterStudent' %}">Register a new student.</a><br><br>
+    <!-- <a href="{% url 'ViewStudents' %}">View Students Records</a> -->
 </body>
 </html>
