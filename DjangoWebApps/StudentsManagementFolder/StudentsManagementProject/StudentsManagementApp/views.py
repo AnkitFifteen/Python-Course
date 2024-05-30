@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Students
 from .forms import RegisterStudentForm
@@ -20,4 +20,9 @@ class UpdateStudent(UpdateView):
     model = Students
     form_class = RegisterStudentForm
     template_name = "edit-student-record.html"
+    success_url = reverse_lazy('ViewStudents')
+
+class DeleteStudent(DeleteView):
+    model = Students
+    template_name = "confirm-to-delete-student.html"
     success_url = reverse_lazy('ViewStudents')

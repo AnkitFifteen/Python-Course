@@ -17,11 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from StudentsManagementApp.views import ViewStudents, RegisterStudent, UpdateStudent, DeleteStudent
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("show-students/", TaskList.as_view(), name = "TaskList"),
-    path("create-task/", CreateTask.as_view(), name = "CreateTask"),
-    path("update-task/<int:pk>/", UpdateTask.as_view(), name = "UpdateTask"),
-    path("view-task-details/<int:pk>/", DetailViewTask.as_view(), name = "DetailViewTask"),
+    path("show-students/", ViewStudents.as_view(), name = "ViewStudents"),
+    path("register-student/", RegisterStudent.as_view(), name = "RegisterStudent"),
+    path("update-student/<int:pk>/", UpdateStudent.as_view(), name = "UpdateStudent"),
+    path("delete-student/<int:pk>/", DeleteStudent.as_view(), name = "DeleteStudent"),
 ]
