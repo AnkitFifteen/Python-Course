@@ -12,12 +12,12 @@ class ViewStudents(ListView):
     
 class RegisterStudent(CreateView):
     model = Students
-    form_class = CreateStudentForm
+    form_class = RegisterStudentForm
     template_name = "register-student.html"
     success_url = reverse_lazy('ViewStudents')
 
 class UpdateStudent(UpdateView):
     model = Students
-    form_class = UpdateStudentForm
+    form_class = RegisterStudentForm
     template_name = "edit-student-record.html"
     success_url = reverse_lazy('ViewStudents')

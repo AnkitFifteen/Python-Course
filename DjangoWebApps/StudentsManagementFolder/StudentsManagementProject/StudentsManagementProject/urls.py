@@ -20,4 +20,8 @@ from django.urls import path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("show-students/", TaskList.as_view(), name = "TaskList"),
+    path("create-task/", CreateTask.as_view(), name = "CreateTask"),
+    path("update-task/<int:pk>/", UpdateTask.as_view(), name = "UpdateTask"),
+    path("view-task-details/<int:pk>/", DetailViewTask.as_view(), name = "DetailViewTask"),
 ]

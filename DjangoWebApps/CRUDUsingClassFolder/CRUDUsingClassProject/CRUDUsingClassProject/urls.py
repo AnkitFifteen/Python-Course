@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from CRUDUsingClassApp.views import TaskList, CreateTask, UpdateTask, DetailViewTask
+from CRUDUsingClassApp.views import TaskList, CreateTask, UpdateTask, DetailViewTask, DeleteTask
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,4 +25,5 @@ urlpatterns = [
     path("create-task/", CreateTask.as_view(), name = "CreateTask"),
     path("update-task/<int:pk>/", UpdateTask.as_view(), name = "UpdateTask"),
     path("view-task-details/<int:pk>/", DetailViewTask.as_view(), name = "DetailViewTask"),
+    path("delete-task/<int:pk>/", DeleteTask.as_view(), name = "DeleteTask"),
 ]

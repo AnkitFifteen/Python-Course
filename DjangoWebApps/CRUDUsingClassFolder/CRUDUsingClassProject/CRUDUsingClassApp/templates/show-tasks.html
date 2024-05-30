@@ -49,7 +49,7 @@
                       <h6 class="font-weight-bold my-2">{{ task.status }}</h6>
                       <ul class="list-inline small">
                         <li class="list-inline-item m-0"><i class="fa fa-star text-success"><a href="{% url 'UpdateTask' task.pk %}">Update Task</a></i></li>
-                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"><a href="">Delete Task</a></i></li>
+                        <li class="list-inline-item m-0"><i class="fa fa-star text-success"><a href="{% url 'DeleteTask' task.pk %}">Delete Task</a></i></li>
                         <li class="list-inline-item m-0"><i class="fa fa-star text-success"><a href="{% url 'DetailViewTask' task.pk %}">View Task Details</a></i></li>
                         <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
                         <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
