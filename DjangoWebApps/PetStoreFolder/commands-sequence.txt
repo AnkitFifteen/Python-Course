@@ -1,0 +1,22 @@
+DjangoWebApps
++PetStoreFolder
+-+PetStoreProject
+--+PetStoreApp
+--+PetStoreProject
+
+cd DjangoWebApps
+mkdir PetStoreFolder
+cd PetStoreFolder
+django-admin startproject PetStoreProject
+cd PetStoreProject
+python manage.py startapp PetStoreApp
+    python manage.py -m startapp PetStoreApp
+        py manage startapp PetStoreApp
+            python manage startapp PetStoreApp
+cd ..
+python manage.py runserver
+
+python -m manage makemigrations
+python -m manage migrate
+
+python manage.py createsuperuser
