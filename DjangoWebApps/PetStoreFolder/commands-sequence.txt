@@ -20,3 +20,9 @@ python -m manage makemigrations
 python -m manage migrate
 
 python manage.py createsuperuser
+
+Username: Ankit
+eMail: A@gmail.com
+Password: A@gmail.com
+
+pip install pillow
