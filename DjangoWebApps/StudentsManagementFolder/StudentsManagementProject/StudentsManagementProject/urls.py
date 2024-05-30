@@ -22,6 +22,7 @@ from StudentsManagementApp.views import ViewStudents, RegisterStudent, UpdateStu
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", ViewStudents.as_view(), name = "ViewStudents"),
     path("show-students/", ViewStudents.as_view(), name = "ViewStudents"),
     path("register-student/", RegisterStudent.as_view(), name = "RegisterStudent"),
     path("update-student/<int:pk>/", UpdateStudent.as_view(), name = "UpdateStudent"),
