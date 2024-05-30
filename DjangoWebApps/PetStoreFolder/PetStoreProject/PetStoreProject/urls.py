@@ -17,7 +17,9 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from PetStoreApp.views import ViewPets
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("view-pets/", ViewPets.as_view(), name = "ViewPets"),
 ]
