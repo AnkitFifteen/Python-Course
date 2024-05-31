@@ -24,7 +24,7 @@ from PetStoreApp.views import ViewPets
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("view-pets/", ViewPets.as_view(), name = "ViewPets"),
-    # path("login/", Login.as_view(), name="Login"),
+    # path("login-signup/", LoginSignup.as_view(), name="LoginSignup"),
 ]
 
 if settings.DEBUG:

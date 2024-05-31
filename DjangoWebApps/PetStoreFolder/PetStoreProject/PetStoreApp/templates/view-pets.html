@@ -1,4 +1,4 @@
-{% include 'top-nav.html' %}
+{% extends 'top-nav.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
+        {% block style %}
         body{background:#eee}.ratings 
         i{font-size: 16px;color: red}
         .strike-text{color: red;text-decoration: line-through}
@@ -13,8 +14,9 @@
         .dot{height: 7px;width: 7px;margin-left: 6px;margin-right: 6px;margin-top: 3px;background-color: blue;border-radius: 50%;display: inline-block}
         .spec-1{color: #938787;font-size: 15px}
         h5{font-weight: 400}.para{font-size: 16px}
+        {% endblock %}
     </style>
-    <title>View Pets</title>
+    <title>{% block title %} View Pets {% endblock %}</title>
 </head>
 <body>
 {% block content %}
