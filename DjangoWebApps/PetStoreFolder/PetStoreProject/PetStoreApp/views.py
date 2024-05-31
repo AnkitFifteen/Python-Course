@@ -9,3 +9,9 @@ class ViewPets(ListView):
     model = Pet
     template_name = "view-pets.html"
     context_object_name = "pet_records"
+
+# class LoginSignup(CreateView):
+#     model = Pet
+#     form_class = SignupForm
+#     template_name = "login-signup.html"
+#     success_url = reverse_lazy('ViewPets')
