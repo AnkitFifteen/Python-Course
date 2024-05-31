@@ -14,7 +14,7 @@ class ViewPets(ListView):
 def Search(request):
     if request.method == "POST":
         search_data = request.POST.get('searchquery')
-        pet_records = Pet.objects.filter(Q(name__icontains = search_data)|Q(breed__icontains = search_data)|Q(species__icontains = search_data)|Q(description__icontains = search_data))
+        pet_records = Pet.objects.filter(Q(name__icontains = search_data)|Q(breed__icontains = search_data)|Q(species__icontains = search_data)|Q(description__icontains = search_data)|Q(price__icontains = search_data))
         return render(request, "view-pets.html", {'pet_records':pet_records})
 
 # class LoginSignup(CreateView):
