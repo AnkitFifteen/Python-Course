@@ -14,3 +14,12 @@ class Pet(models.Model):
 
     class Meta:
         db_table = "Pet"
+
+class Customer(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    phone = models.BigIntegerField()
+    password = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = "Customer"

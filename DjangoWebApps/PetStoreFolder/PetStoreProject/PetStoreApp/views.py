@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
-from .models import Pet
+from django.contrib.auth.hashers import make_password, check_password
+from .models import Pet, Customer
 #from .forms import CreateTaskForm
 
 # Create your views here.
@@ -16,6 +17,20 @@ def Search(request):
         search_data = request.POST.get('searchquery')
         pet_records = Pet.objects.filter(Q(name__icontains = search_data)|Q(breed__icontains = search_data)|Q(species__icontains = search_data)|Q(description__icontains = search_data)|Q(price__icontains = search_data))
         return render(request, "view-pets.html", {'pet_records':pet_records})
+    
+def Register(request):
+    if request.method == "GET":
+        return render(request, 'register.html')
+    elif request.method == "POST":
+        name = request.POST.get("Name")
+        email = request.POST.get("Email")
+        phone = request.POST.get("Phone")
+        password = request.POST.get("Password")
+        encrypted_password = make_password(password)
+
+        customer_record = Customer(name=name,email=email,phone=phone,password=encrypted_password)
+        customer_record.save()
+        return render(request, "view-pets.html")
 
 # class LoginSignup(CreateView):
 #     model = Pet
