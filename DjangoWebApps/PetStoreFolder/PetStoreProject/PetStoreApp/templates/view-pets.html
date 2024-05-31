@@ -1,3 +1,4 @@
+{% include 'top-nav.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,15 +26,15 @@
                     <div class="col-md-6 mt-1">
                         <h5>{{ pet.name }}</h5>
                         <div class="d-flex flex-row">
-                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>Age: {{ pet.}}</span>
+                            <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>Age: {{ pet.age }}</span>
                         </div>
-                        <div class="mt-1 mb-1 spec-1"><span>Breed</span><span class="dot"></span><span>{{ pet.breed }}</span><span class="dot"></span><span>Best finish<br></span></div>
-                        <div class="mt-1 mb-1 spec-1"><span>Species</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
-                        <p class="text-justify text-truncate para mb-0">{{ pet.description }}<br><br></p>
+                        <div class="mt-1 mb-1 spec-1"><span class="dot"></span><span>Breed: {{ pet.breed }}</span><span class="dot"></span><span>Gender: {{ pet.gender }}<br></span></div>
+                        <div class="mt-1 mb-1 spec-1"><span class="dot"></span><span>Species: {{ pet.species }}</span></div>
+                        <p class="text-justify text-truncate para mb-0">Description: {{ pet.description }}<br><br></p>
                     </div>
                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                         <div class="d-flex flex-row align-items-center">
-                            <h4 class="mr-1">₹ {{ pet.price}}</h4><span class="strike-text">₹ 20.99</span>
+                            <h4 class="mr-1">₹ {{ pet.price}}</h4>
                         </div>
                         <h6 class="text-success">Free shipping</h6>
                         <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Details</button><button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
