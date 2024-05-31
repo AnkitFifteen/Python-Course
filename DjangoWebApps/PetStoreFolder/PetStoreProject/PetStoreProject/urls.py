@@ -19,11 +19,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from PetStoreApp.views import ViewPets
+from PetStoreApp.views import ViewPets, Search
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("view-pets/", ViewPets.as_view(), name = "ViewPets"),
+    path("search/", Search, name = 'Search')
     # path("login-signup/", LoginSignup.as_view(), name="LoginSignup"),
 ]
 
