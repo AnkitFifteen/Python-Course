@@ -17,7 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from IndianStatesApp.views import ViewStates, CreateState, UpdateState, DeleteState
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", ViewStates.as_view(), name = "ViewStates"),
+    path("show-states/", ViewStates.as_view(), name = "ViewStates"),
+    path("create-state/", CreateState.as_view(), name = "CreateState"),
+    path("update-state/<int:pk>/", UpdateState.as_view(), name = "UpdateState"),
+    path("delete-state/<int:pk>/", DeleteState.as_view(), name = "DeleteState"),
 ]

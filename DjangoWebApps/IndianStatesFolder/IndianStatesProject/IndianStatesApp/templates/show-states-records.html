@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show States Records</title>
+</head>
+<body>
+    <table border = "2">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Population</th>
+        <th>Language</th>
+        <th>Capital</th>
+        <th>Operation 1</th>
+        <th>Operation 2</th>
+        {% for state_record in states_records %}
+        <tr>
+            <td>{{state_record.id}}</td>
+            <td>{{state_record.Name}}</td>
+            <td>{{state_record.Population}}</td>
+            <td>{{state_record.Language}}</td>
+            <td>{{state_record.Capital}}</td>
+            <td><a href="{% url 'UpdateState' state_record.pk %}">Update this Record</a></td>
+            <td><a href="{% url 'DeleteState' state_record.pk %}">Delete this Record</a></td>
+        </tr>
+        {% endfor %}
+    </table><br><br>
+    <a href="{% url 'CreateState' %}">Create a new state.</a><br><br>
+    <!-- <a href="{% url 'ViewStates' %}">View States Records</a> -->
+</body>
+</html>
