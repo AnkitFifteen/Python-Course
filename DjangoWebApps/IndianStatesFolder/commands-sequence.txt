@@ -1,0 +1,20 @@
+DjangoWebApps
++IndianStatesFolder
+-+IndianStatesProject
+--+IndianStatesApp
+--+IndianStatesProject
+
+cd DjangoWebApps
+mkdir IndianStatesFolder
+cd IndianStatesFolder
+django-admin startproject IndianStatesProject
+cd IndianStatesProject
+python manage.py startapp IndianStatesApp
+    python manage.py -m startapp IndianStatesApp
+        py manage startapp IndianStatesApp
+            python manage startapp IndianStatesApp
+cd ..
+python manage.py runserver
+
+python -m manage makemigrations
+python -m manage migrate
