@@ -12,15 +12,15 @@ class ViewPets(ListView):
     template_name = "view-pets.html"
     context_object_name = "pet_records"
 
-def Search(request):
+def SearchPets(request):
     if request.method == "POST":
         search_data = request.POST.get('searchquery')
         pet_records = Pet.objects.filter(Q(name__icontains = search_data)|Q(breed__icontains = search_data)|Q(species__icontains = search_data)|Q(description__icontains = search_data)|Q(price__icontains = search_data))
         return render(request, "view-pets.html", {'pet_records':pet_records})
     
-def Register(request):
+def RegisterUser(request):
     if request.method == "GET":
-        return render(request, 'register.html')
+        return render(request, 'register-user.html')
     elif request.method == "POST":
         name = request.POST.get("Name")
         email = request.POST.get("Email")
@@ -30,7 +30,8 @@ def Register(request):
 
         customer_record = Customer(name=name,email=email,phone=phone,password=encrypted_password)
         customer_record.save()
-        return render(request, "view-pets.html")
+        pet_records = Pet.objects.all()
+        return render(request, "view-pets.html", {'pet_records':pet_records})
 
 # class LoginSignup(CreateView):
 #     model = Pet
