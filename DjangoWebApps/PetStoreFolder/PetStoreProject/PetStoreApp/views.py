@@ -13,7 +13,9 @@ class ViewPets(ListView):
     context_object_name = "pet_records"
 
     def get_context_data(self, **kwargs):
+        data = self.request.session['sessionvalue']
         context = super().get_context_data(**kwargs)
+        context['session'] = data
         return context
 
 def SearchPets(request):
@@ -32,11 +34,16 @@ def RegisterUser(request):
         password = request.POST.get("Password")
         encrypted_password = make_password(password)
 
-        customer_record = Customer(name=name,email=email,phone=phone,password=encrypted_password)
-        customer_record.save()
-        pet_records = Pet.objects.all()
-        return redirect("../login-user/")
-        # return render(request, "view-pets.html", {'pet_records':pet_records})
+        email_present = Customer.objects.filter(email=email)
+
+        if email_present:
+            return render(request, "register-user.html", {"EmailPresent":"Flag for email already used."})
+        else:
+            customer_record = Customer(name=name,email=email,phone=phone,password=encrypted_password)
+            customer_record.save()
+            pet_records = Pet.objects.all()
+            return redirect("../login-user/")
+            # return render(request, "view-pets.html", {'pet_records':pet_records})
     
 def LoginUser(request):
     if request.method == "GET":
@@ -52,12 +59,12 @@ def LoginUser(request):
             flag = check_password(Password, custobj.password)
 
             if flag:
-                request.session["sessionvalue"] = custobj.email
+                request.session["sessionvalue"] = custobj.name
                 return render(request, "view-pets.html", {"session": request.session["sessionvalue"]})
             else: 
-                return render(request, "login-user.html", {"msg":"Incorrect username and password"})
+                return render(request, "login-user.html", {"InvalidInput":"Flag for invalid input."})
         else:
-            return render(request, "login-user.html", {"msg":"Incorrect username and password"})
+            return render(request, "login-user.html", {"InvalidInput":"Flag for invalid input."})
 
 # class LoginSignup(CreateView):
 #     model = Pet

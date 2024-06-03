@@ -26,6 +26,14 @@
 </head>
 <body>
 {% block content %}
+{% if EmailPresent %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong class="alert alert-info" role="alert">Email address already used.</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
     <div class="d-flex justify-content-center align-items-center mt-5">
         <div class="card">
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
