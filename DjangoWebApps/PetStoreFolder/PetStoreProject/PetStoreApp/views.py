@@ -12,6 +12,10 @@ class ViewPets(ListView):
     template_name = "view-pets.html"
     context_object_name = "pet_records"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
 def SearchPets(request):
     if request.method == "POST":
         search_data = request.POST.get('searchquery')
