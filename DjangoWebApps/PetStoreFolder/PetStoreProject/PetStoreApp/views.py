@@ -37,14 +37,14 @@ def LoginUser(request):
     if request.method == "GET":
         return render(request, "login-user.html")
     elif request.method == "POST":
-        user = request.POST.get("username")
-        password = request.POST.get("pass")
+        Email = request.POST.get("Email")
+        Password = request.POST.get("Password")
 
-        cust = Customer.objects.filter(email=user)
+        cust = Customer.objects.filter(email=Email)
         if cust:
-            custobj = Customer.objects.get(email=user)
+            custobj = Customer.objects.get(email=Email)
 
-            flag = check_password(password, custobj.password)
+            flag = check_password(Password, custobj.password)
 
             if flag:
                 request.session["sessionvalue"] = custobj.email

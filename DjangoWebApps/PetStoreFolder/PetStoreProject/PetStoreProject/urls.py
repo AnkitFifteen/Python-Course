@@ -19,13 +19,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from PetStoreApp.views import ViewPets, SearchPets, RegisterUser
+from PetStoreApp.views import ViewPets, SearchPets, RegisterUser, LoginUser
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", ViewPets.as_view(), name = "ViewPets"),
     path("view-pets/", ViewPets.as_view(), name = "ViewPets"),
     path("search-pets/", SearchPets, name = 'SearchPets'),
     path("register-user/", RegisterUser, name = 'RegisterUser'),
+    path("login-user/", LoginUser, name = 'LoginUser'),
 ]
 
 if settings.DEBUG:
