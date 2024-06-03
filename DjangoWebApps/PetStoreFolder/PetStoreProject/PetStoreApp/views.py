@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
@@ -31,7 +31,8 @@ def RegisterUser(request):
         customer_record = Customer(name=name,email=email,phone=phone,password=encrypted_password)
         customer_record.save()
         pet_records = Pet.objects.all()
-        return render(request, "view-pets.html", {'pet_records':pet_records})
+        return redirect("../login-user/")
+        # return render(request, "view-pets.html", {'pet_records':pet_records})
     
 def LoginUser(request):
     if request.method == "GET":
