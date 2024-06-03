@@ -32,6 +32,27 @@ def RegisterUser(request):
         customer_record.save()
         pet_records = Pet.objects.all()
         return render(request, "view-pets.html", {'pet_records':pet_records})
+    
+def LoginUser(request):
+    if request.method == "GET":
+        return render(request, "login-user.html")
+    elif request.method == "POST":
+        user = request.POST.get("username")
+        password = request.POST.get("pass")
+
+        cust = Customer.objects.filter(email=user)
+        if cust:
+            custobj = Customer.objects.get(email=user)
+
+            flag = check_password(password, custobj.password)
+
+            if flag:
+                request.session["sessionvalue"] = custobj.email
+                return render(request, "view-pets.html", {"session": request.session["sessionvalue"]})
+            else: 
+                return render(request, "login-user.html", {"msg":"Incorrect username and password"})
+        else:
+            return render(request, "login-user.html", {"msg":"Incorrect username and password"})
 
 # class LoginSignup(CreateView):
 #     model = Pet
