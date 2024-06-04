@@ -17,6 +17,11 @@ class ViewPets(ListView):
         context = super().get_context_data(**kwargs)
         context['session'] = data
         return context
+    
+class PetDetails(DetailView):
+    model = Pet
+    template_name = "pet-details.html"
+    context_object_name = "pet"
 
 def SearchPets(request):
     if request.method == "POST":
