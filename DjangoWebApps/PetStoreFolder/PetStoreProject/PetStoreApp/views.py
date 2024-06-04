@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from django.urls import reverse_lazy
+from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password, check_password
 from .models import Pet, Customer
@@ -70,6 +71,17 @@ def LoginUser(request):
                 return render(request, "login-user.html", {"InvalidInput":"Flag for invalid input."})
         else:
             return render(request, "login-user.html", {"InvalidInput":"Flag for invalid input."})
+        
+def AddToCart(request):
+    productid = request.POST.get("productid")
+    custsession = request.session['sessionvalue']   #email of customer
+    custobj = Customer.objects.get(email = custsession)   #fetch record from database table using email
+    custid = custobj.id     #fetch customer id using customer object
+    pobj = Pet.objects.get(id = productid)
+    cartobj = Cart(cid = custobj, pid = pobj, quantity = 1, totalamount = pobj.price * 1)
+    cartobj.save()
+
+    return HttpResponse("Product added to cart.")
 
 # class LoginSignup(CreateView):
 #     model = Pet

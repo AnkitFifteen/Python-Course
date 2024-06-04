@@ -1,15 +1,15 @@
+{% extends 'top-nav.html' %}
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
-    {% block head %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Pet Details">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
+    {% block AfterTitleBeforeNav %}
     <link rel="stylesheet" href="https://website655176.nicepage.io/nicepage.css?version=b3f72381-1779-4414-b033-55a2a65456be" media="screen">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    {% block AfterTitleBeforeNav %}
     <style class="u-style">.u-section-2 .u-sheet-1 {
   min-height: 799px;
 }
@@ -153,7 +153,6 @@
 }</style>
 {% endblock %}
 <title>{% block title %} Pet Details {% endblock %}</title>
-{% endblock %}
 </head>
   <body class="u-body">
     {% block content %}

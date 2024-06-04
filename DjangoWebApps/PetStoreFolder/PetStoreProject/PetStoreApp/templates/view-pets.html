@@ -46,7 +46,12 @@
                             <a href="{% url 'PetDetails' pet.pk %}" class="btn btn-primary btn-sm active" role="button">
                                 Details
                             </a>
-                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button></div>
+                            <form method = "POST" action="{% url 'AddToCart' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name=""ProductID" value="{{ pet.id }}">
+                                <button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 {% endfor %}
