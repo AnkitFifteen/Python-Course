@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password, check_password
-from .models import Pet, Customer
+from .models import Pet, Customer, Cart
 #from .forms import CreateTaskForm
 
 # Create your views here.
@@ -65,26 +65,36 @@ def LoginUser(request):
             flag = check_password(Password, custobj.password)
 
             if flag:
-                request.session["sessionvalue"] = custobj.name
+                request.session["sessionvalue"] = custobj.email
                 return render(request, "view-pets.html", {"session": request.session["sessionvalue"]})
             else: 
                 return render(request, "login-user.html", {"InvalidInput":"Flag for invalid input."})
         else:
             return render(request, "login-user.html", {"InvalidInput":"Flag for invalid input."})
-        
+
 def AddToCart(request):
-    productid = request.POST.get("productid")
-    custsession = request.session['sessionvalue']   #email of customer
-    custobj = Customer.objects.get(email = custsession)   #fetch record from database table using email
-    custid = custobj.id     #fetch customer id using customer object
+    productid = request.POST.get('ProductID')
+    custsession = request.session['sessionvalue'] #email of customer
+    custobj = Customer.objects.get(email = custsession) #fetch record from database table using email
+    custid = custobj.id #fetch customer id using customer object
     pobj = Pet.objects.get(id = productid)
-    cartobj = Cart(cid = custobj, pid = pobj, quantity = 1, totalamount = pobj.price * 1)
-    cartobj.save()
 
-    return HttpResponse("Product added to cart.")
+    flag = Cart.objects.filter(cid = custobj.id,pid = pobj.id)
+    if flag:
+        cartobj = Cart.objects.get(cid = custobj.id,pid = pobj.id)
+        cartobj.quantity = cartobj.quantity +1
+        cartobj.totalamount = pobj.price * cartobj.quantity
+        cartobj.save()
+    else:
+        cartobj = Cart(cid = custobj,pid = pobj,quantity = 1,totalamount = pobj.price*1)
+        cartobj.save()
 
-# class LoginSignup(CreateView):
-#     model = Pet
-#     form_class = SignupForm
-#     template_name = "login-signup.html"
-#     success_url = reverse_lazy('ViewPets')
+    return redirect('../view-pets/')
+
+
+def ViewCart(request):
+    custsession = request.session['sessionvalue'] #email of customer
+    custobj = Customer.objects.get(email = custsession) 
+    cart_products = Cart.objects.filter(cid = custobj.id)
+
+    return render(request,'cart.html',{'cart_products':cart_products})

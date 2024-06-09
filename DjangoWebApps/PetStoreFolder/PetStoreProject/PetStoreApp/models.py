@@ -23,3 +23,12 @@ class Customer(models.Model):
 
     class Meta:
         db_table = "Customer"
+
+class Cart(models.Model):
+    cid = models.ForeignKey(Customer,on_delete=models.CASCADE)
+    pid = models.ForeignKey(Pet,on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    totalamount= models.FloatField()
+
+    class Meta:
+        db_table='Cart'
