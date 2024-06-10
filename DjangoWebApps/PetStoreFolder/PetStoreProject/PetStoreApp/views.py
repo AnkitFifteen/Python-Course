@@ -98,3 +98,7 @@ def ViewCart(request):
     cart_products = Cart.objects.filter(cid = custobj.id)
 
     return render(request,'cart.html',{'cart_products':cart_products})
+
+def ChangeQuantity(request):
+    if request.method == "POST":
+        
