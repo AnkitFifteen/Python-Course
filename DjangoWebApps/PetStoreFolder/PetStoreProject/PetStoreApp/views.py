@@ -121,4 +121,14 @@ def ChangeQuantity(request):
             cartobj.save()
 
     return redirect('../view-cart/')
+
+def OrderCheckout(request):
+    if request.method == "GET":
+        custsession = request.session['sessionvalue'] 
+        custobj = Customer.objects.get(email = custsession) 
+        cart_products = Cart.objects.filter(cid = custobj.id)
+        total_amount = 0
+        for product in cart_products:
+            total_amount += product.totalamount
+        return render(request,'order-checkout.html',{'cart_products':cart_products, 'total_amount':total_amount})
         
