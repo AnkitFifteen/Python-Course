@@ -42,11 +42,15 @@
                             <h4 class="mr-1">₹ {{ product.pid.price }}</h4>
                         </div>
                         <h6 class="text-success">Free shipping</h6>
-                        <div class="d-flex flex-column mt-4">
+                        <div class="d-flex flex-column mt-4"><button class="btn btn-Danger btn-sm" type="button">Details</button>
                             <div class="d-flex flex-row align-items-center">
+                                <form method="POST" action="{% url 'ChangeQuantity' %}">
+                                {% csrf_token%}
+                                <button type="submit" name="changequantitybutton" value="-">-</button>
+                                <input type="hidden" value="{{product.pid.id}}" name="pid">
                                 <h4 class="mr-1">Quantity : {{product.quantity}}</h4><span class="strike-text"></span>
-                            </div>  
-                        </form>
+                                <button type="submit" name="changequantitybutton" value="+">+</button>
+                            </form>
                     </div>
                 </div>
             </div>

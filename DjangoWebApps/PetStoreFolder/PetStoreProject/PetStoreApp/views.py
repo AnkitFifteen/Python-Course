@@ -100,5 +100,25 @@ def ViewCart(request):
     return render(request,'cart.html',{'cart_products':cart_products})
 
 def ChangeQuantity(request):
-    if request.method == "POST":
+    cemail = request.session['sessionvalue']
+    pid = request.POST.get('pid')
+    custobj = Customer.objects.get(email = cemail)
+    pobj = Pet.objects.get(id = pid)
+    cartobj = Cart.objects.get(cid = custobj.id,pid=pobj.id)
+
+    if request.POST.get('changequantitybutton') == '+':
+        cartobj.quantity = cartobj.quantity + 1
+        cartobj.totalamount = cartobj.quantity * pobj.price
+        cartobj.save()
+
+    elif request.POST.get('changequantitybutton') == '-':
+        if cartobj.quantity == 1:
+            cartobj.delete()
+        else :
+            cartobj.quantity = cartobj.quantity - 1
+            cartobj.totalamount = cartobj.quantity * pobj.price
+            print(cartobj.totalamount)
+            cartobj.save()
+
+    return redirect('../view-cart/')
         

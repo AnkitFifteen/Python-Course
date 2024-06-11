@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from PetStoreApp.views import ViewPets, SearchPets, RegisterUser, LoginUser, PetDetails, AddToCart, ViewCart
+from PetStoreApp.views import ViewPets, SearchPets, RegisterUser, LoginUser, PetDetails, AddToCart, ViewCart, ChangeQuantity
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -31,6 +31,7 @@ urlpatterns = [
     path("pet-details/<int:pk>/", PetDetails.as_view(), name = 'PetDetails'),
     path("add-to-cart/", AddToCart, name = 'AddToCart'),
     path("view-cart/", ViewCart, name = 'ViewCart'),
+    path('change-quantity/', ChangeQuantity, name='ChangeQuantity')
 ]
 
 if settings.DEBUG:

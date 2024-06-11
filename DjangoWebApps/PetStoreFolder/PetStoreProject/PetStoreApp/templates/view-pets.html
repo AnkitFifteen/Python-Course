@@ -16,24 +16,6 @@
         .spec-1{color: #938787;font-size: 15px}
         h5{font-weight: 400}.para{font-size: 16px}
     </style>
-    <script>
-        const incrementButton = document.getElementsByName('incrementButton')
-        const decrementButton = document.getElementsByName('decrementButton')
-
-        incrementButton.addEventListener('click', () =>
-        {
-	        const newQuantity = (parseInt(quantity.value) || 0) + 1
-	        quantity.value = newQuantity
-            button.setAttribute('data-item-quantity', newQuantity)
-        })
-
-        decrementButton.addEventListener('click', () => 
-        {
-	        const newQuantity = (parseInt(quantity.value) || 0) - 1
-	        quantity.value = newQuantity
-            button.setAttribute('data-item-quantity', newQuantity)
-        })
-    </script>
     {% endblock %}
     <title>{% block title %} View Pets {% endblock %}</title>
     {% endblock %}
@@ -64,15 +46,9 @@
                             <a href="{% url 'PetDetails' pet.pk %}" class="btn btn-primary btn-sm active" role="button">
                                 Details
                             </a>
-                            
                             <form method = "POST" action="{% url 'AddToCart' %}">
-                            Qty: 
-                            <button type="button" name="decrementButton" class="btn btn-outline-primary btn-sm mt-2"> - </button>
-                                quantity
-                            <button type="button" name="incrementButton" class="btn btn-outline-primary btn-sm mt-2"> + </button>
                                 {% csrf_token %}
                                 <input type="hidden" name="ProductID" value="{{ pet.id }}">
-
                                 <button class="btn btn-outline-primary btn-sm mt-2" type="submit">Add to cart</button>
                             </div>
                         </form>
