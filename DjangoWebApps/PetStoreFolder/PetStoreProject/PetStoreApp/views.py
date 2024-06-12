@@ -143,11 +143,11 @@ def PlaceOrder(request):
     phoneno = request.POST.get('phoneNumber')
 
     datev = date.today()
-    print(datev.date)
+    print(datev)
     orderobj = Order(firstname = first_name, lastname = last_name, address = address, city = city, state = state, pincode = pincode, phoneno = phoneno, orderdate = datev)
     orderobj.save()
 
-    order_no = str(orderobj.id) + str(datev.date).replace('-','')
+    order_no = str(orderobj.id) + str(datev).replace('-','')
     orderobj.ordernumber = order_no
     orderobj.save()
 
