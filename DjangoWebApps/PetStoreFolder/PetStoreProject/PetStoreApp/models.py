@@ -32,3 +32,18 @@ class Cart(models.Model):
 
     class Meta:
         db_table='Cart'
+
+class Order(models.Model):
+    ordernumber = models.CharField(max_length=100)
+    orderdate = models.DateField(max_length=100)
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    phoneno = models.BigIntegerField()
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    pincode = models.BigIntegerField()
+    orderstatus = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'Order'

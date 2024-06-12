@@ -4,7 +4,8 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password, check_password
-from .models import Pet, Customer, Cart
+from .models import Pet, Customer, Cart, Order
+from datetime import datetime
 #from .forms import CreateTaskForm
 
 # Create your views here.
@@ -131,4 +132,33 @@ def OrderCheckout(request):
         for product in cart_products:
             total_amount += product.totalamount
         return render(request,'order-checkout.html',{'cart_products':cart_products, 'total_amount':total_amount})
+    
+def PlaceOrder(request):
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
+    address = request.POST.get('address')
+    city = request.POST.get('city')
+    state = request.POST.get('state')
+    pincode = request.POST.get('pincode')
+    phoneno = request.POST.get('phoneno')
+
+    datetimev = datetime.now()
+    print(datetimev.date)
+    orderobj = Order(firstname = first_name, lastname = last_name, address = address, city = city, state = state, pincode = pincode, phoneno = phoneno, orderdate = datetimev)
+    orderobj.save()
+
+    order_no = str(orderobj.id) + str(datetimev.date).replace('-','')
+    orderobj.ordernumber = order_no
+    orderobj.save()
+
+    custsession = request.session['sessionvalue'] 
+    custobj = Customer.objects.get(email = custsession) 
+    cart_products = Cart.objects.filter(cid = custobj.id)
+
+    total_amount = 0
+    for product in cart_products:
+        total_amount += product.totalamount
+
+    return render(request, 'payment.html', {'orderobj':orderobj, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount})
+
         

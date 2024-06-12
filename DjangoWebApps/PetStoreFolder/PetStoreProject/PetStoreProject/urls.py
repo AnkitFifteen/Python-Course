@@ -32,7 +32,7 @@ urlpatterns = [
     path("add-to-cart/", AddToCart, name = 'AddToCart'),
     path("view-cart/", ViewCart, name = 'ViewCart'),
     path('change-quantity/', ChangeQuantity, name='ChangeQuantity'),
-    path('order-checkout/', OrderCheckout, name='OrderCheckout')
+    path('order-checkout/', OrderCheckout, name='OrderCheckout'),
 ]
 
 if settings.DEBUG:

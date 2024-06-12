@@ -1,0 +1,4 @@
+1. View all pets without any need for session value.
+2. Ban hotlinking
+3. Hide user login related options unless there's a session running.
+4. 
