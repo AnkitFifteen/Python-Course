@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password, check_password
 from .models import Pet, Customer, Cart, Order
-from datetime import datetime
+from datetime import date
 #from .forms import CreateTaskForm
 
 # Create your views here.
@@ -134,20 +134,20 @@ def OrderCheckout(request):
         return render(request,'order-checkout.html',{'cart_products':cart_products, 'total_amount':total_amount})
     
 def PlaceOrder(request):
-    first_name = request.POST.get('first_name')
-    last_name = request.POST.get('last_name')
+    first_name = request.POST.get('firstName')
+    last_name = request.POST.get('lastName')
     address = request.POST.get('address')
     city = request.POST.get('city')
     state = request.POST.get('state')
-    pincode = request.POST.get('pincode')
-    phoneno = request.POST.get('phoneno')
+    pincode = request.POST.get('pinCode')
+    phoneno = request.POST.get('phoneNumber')
 
-    datetimev = datetime.now()
-    print(datetimev.date)
-    orderobj = Order(firstname = first_name, lastname = last_name, address = address, city = city, state = state, pincode = pincode, phoneno = phoneno, orderdate = datetimev)
+    datev = date.today()
+    print(datev.date)
+    orderobj = Order(firstname = first_name, lastname = last_name, address = address, city = city, state = state, pincode = pincode, phoneno = phoneno, orderdate = datev)
     orderobj.save()
 
-    order_no = str(orderobj.id) + str(datetimev.date).replace('-','')
+    order_no = str(orderobj.id) + str(datev.date).replace('-','')
     orderobj.ordernumber = order_no
     orderobj.save()
 
@@ -159,6 +159,6 @@ def PlaceOrder(request):
     for product in cart_products:
         total_amount += product.totalamount
 
-    return render(request, 'payment.html', {'orderobj':orderobj, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount})
+    return render(request, 'order-payment.html', {'orderobj':orderobj, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount})
 
         
