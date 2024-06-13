@@ -47,3 +47,26 @@ class Order(models.Model):
 
     class Meta:
         db_table = 'Order'
+
+class Payment(models.Model):
+    customerid = models.ForeignKey(Customer, on_delete = models.CASCADE)
+    oid = models.ForeignKey(Order, on_delete = models.CASCADE)
+    paymentstatus = models.CharField(max_length = 100, default = 'Pending')
+    transactionid = models.CharField(max_length = 200)
+    paymentmode = models.CharField(max_length = 100, default = 'PayPal')
+
+    class Meta:
+        db_table = 'Payment'
+
+class OrderDetail(models.Model):
+    ordernumber = models.CharField(max_length = 100)
+    customerid = models.ForeignKey(Customer, on_delete = models.CASCADE)
+    productid = models.ForeignKey(Pet, on_delete = models.CASCADE)
+    quantity = models.IntegerField()
+    totalprice = models.IntegerField()
+    paymentid = models.ForeignKey(Payment, on_delete = models.CASCADE, null = True)
+    created_at = models.DateField(auto_now = True)
+    updated_at = models.DateField(auto_now = True)
+
+    class Meta:
+        db_table = 'OrderDetail'
