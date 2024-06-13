@@ -161,6 +161,11 @@ def PlaceOrder(request):
         total_amount += product.totalamount
         products_count += 1
 
+    from django.core.mail import EmailMessage
+
+    sm = EmailMessage('Order placed', 'Order placed from pet store application. Total bill for your order is Rs.' + str(total_amount), to=['retroankit@gmail.com'])
+    sm.send()
+
     return render(request, 'order-payment.html', {'orderobj':orderobj, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount, 'products_count':products_count})
 
         

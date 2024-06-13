@@ -12,7 +12,7 @@
      <link href="https://getbootstrap.com/docs/4.1/examples/checkout/form-validation.css" rel="stylesheet">
     {% endblock %}
 </head>
-<body>
+<body onload="initPayPalButton()">
     {% block content %}
     <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
     
@@ -67,6 +67,7 @@
             onError: function(err) { console.log(err); }
             }).render('#paypal-button-container');
           }
+          window.onload = initPayPalButton;
     </script>
     <div class="container">
         <div class="py-5 text-center">
