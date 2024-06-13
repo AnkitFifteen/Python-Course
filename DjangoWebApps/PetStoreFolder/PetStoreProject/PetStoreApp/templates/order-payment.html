@@ -20,7 +20,7 @@
             var amount= {{ total_amount }}
             function initPayPalButton() 
             {
-              document.getElementById("paypapl").style.visibility ="hidden";
+              document.getElementById("PayPal").style.visibility ="hidden";
               paypal.Buttons({
                 style: {
                         shape: 'rect',
@@ -78,7 +78,7 @@
           <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="text-muted">Your cart</span>
-              <span class="badge badge-secondary badge-pill">3</span>
+              <span class="badge badge-secondary badge-pill">{{ products_count }}</span>
             </h4>
             <ul class="list-group mb-3">
             {% for product in cart_products %}
@@ -135,7 +135,7 @@
               </div>
               <hr class="mb-4">
               <div class="sale my-3"> <div id="paypal-button-container"></div> </div>
-                  <button onclick="initPayPalButton()" name="paypapl" id="paypapl">Do payment</button>
+                  <button onclick="initPayPalButton()" name="PayPal" id="PayPal">Do payment</button>
               </div>
           </div>
         </div>

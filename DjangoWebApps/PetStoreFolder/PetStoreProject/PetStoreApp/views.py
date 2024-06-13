@@ -155,10 +155,12 @@ def PlaceOrder(request):
     custobj = Customer.objects.get(email = custsession) 
     cart_products = Cart.objects.filter(cid = custobj.id)
 
+    products_count = 0
     total_amount = 0
     for product in cart_products:
         total_amount += product.totalamount
+        products_count += 1
 
-    return render(request, 'order-payment.html', {'orderobj':orderobj, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount})
+    return render(request, 'order-payment.html', {'orderobj':orderobj, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount, 'products_count':products_count})
 
         
