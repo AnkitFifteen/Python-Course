@@ -61,18 +61,12 @@
                 // f.submit();
                 odata = {{orderobj.ordernumber}};
                 window.location.replace("paymentsucess/"+data+"/"+odata+"/");
-        });
-      },
+              });
+            },
     
-      onError: function(err) {
-    
-        console.log(err);
-    
-      }
-    
-    }).render('#paypal-button-container');
-    
-    }
+            onError: function(err) { console.log(err); }
+            }).render('#paypal-button-container');
+          }
     </script>
     <div class="container">
         <div class="py-5 text-center">
@@ -106,8 +100,6 @@
           
           <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
-            
-            <form class="needs-validation was-validated" novalidate="" >
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="firstName">First name:</label> {{ orderobj.firstname }}
@@ -145,7 +137,6 @@
               <div class="sale my-3"> <div id="paypal-button-container"></div> </div>
                   <button onclick="initPayPalButton()" name="paypapl" id="paypapl">Do payment</button>
               </div>
-            </form>
           </div>
         </div>
   
