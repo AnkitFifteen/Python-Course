@@ -168,4 +168,19 @@ def PlaceOrder(request):
 
     return render(request, 'order-payment.html', {'orderobj':orderobj, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount, 'products_count':products_count})
 
-        
+def Payment(request, orderID, transactionID):
+    ordered_products = Order.objects.get(orderid = orderID)
+    ordered_products.orderstatus = "ORDER PLACED"
+
+    custsession = request.session['sessionvalue'] 
+    customer_id = Customer.objects.get(email = custsession)
+
+    cart_products = Cart.objects.filter(cid = customer_id)
+    total_amount = 0
+    for product in cart_products:
+        total_amount += product.totalamount
+    cart_products.delete()
+
+    return render(request, 'payment-success.html', {'ordered_products':ordered_products, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount, 'transactionID':transactionID})
+
+           
