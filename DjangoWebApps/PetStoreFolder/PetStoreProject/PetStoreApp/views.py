@@ -184,7 +184,7 @@ def Payment(request, orderID, transactionID):
     payment_object = Payment(customerid=customer_query_set.id, oid=orderID, paymentstatus='Paid', transactionid=transactionID, paymentmode='PayPal')
     payment_object.save()
 
-    order_detail_object = Order(ordernumber=orderID, customerid=cart_products.cid, productid=cart_products.pid, quantity=cart_products.quantity, totalprice=cart_products.totalamount, paymentid=payment_object)
+    order_detail_object = OrderDetail(ordernumber=orderID, customerid=cart_products.cid, productid=cart_products.pid, quantity=cart_products.quantity, totalprice=cart_products.totalamount, paymentid=payment_object)
     order_detail_object.save()
 
     return render(request, 'payment-success.html', {'ordered_products':ordered_products, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount, 'transactionID':transactionID})
