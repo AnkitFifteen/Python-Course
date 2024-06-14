@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password, check_password
-from .models import Pet, Customer, Cart, Order
+from .models import Pet, Customer, Cart, Order, Payment, OrderDetail
 from datetime import date
 #from .forms import CreateTaskForm
 
@@ -173,13 +173,19 @@ def Payment(request, orderID, transactionID):
     ordered_products.orderstatus = "ORDER PLACED"
 
     custsession = request.session['sessionvalue'] 
-    customer_id = Customer.objects.get(email = custsession)
+    customer_query_set = Customer.objects.get(email = custsession)
 
-    cart_products = Cart.objects.filter(cid = customer_id)
+    cart_products = Cart.objects.filter(cid = customer_query_set.id)
     total_amount = 0
     for product in cart_products:
         total_amount += product.totalamount
     cart_products.delete()
+
+    payment_object = Payment(customerid=customer_query_set.id, oid=orderID, paymentstatus='Paid', transactionid=transactionID, paymentmode='PayPal')
+    payment_object.save()
+
+    order_detail_object = Order(ordernumber=orderID, customerid=cart_products.cid, productid=cart_products.pid, quantity=cart_products.quantity, totalprice=cart_products.totalamount, paymentid=payment_object)
+    order_detail_object.save()
 
     return render(request, 'payment-success.html', {'ordered_products':ordered_products, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount, 'transactionID':transactionID})
 
