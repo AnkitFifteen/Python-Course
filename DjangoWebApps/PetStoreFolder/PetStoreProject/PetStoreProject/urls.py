@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from PetStoreApp.views import ViewPets, SearchPets, RegisterUser, LoginUser, PetDetails, AddToCart, ViewCart, ChangeQuantity, OrderCheckout, PlaceOrder, Payment
+from PetStoreApp.views import ViewPets, SearchPets, RegisterUser, LoginUser, PetDetails, AddToCart, ViewCart, ChangeQuantity, OrderCheckout, PlaceOrder, Payment, LogoutUser
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -34,7 +34,8 @@ urlpatterns = [
     path('change-quantity/', ChangeQuantity, name='ChangeQuantity'),
     path('order-checkout/', OrderCheckout, name='OrderCheckout'),
     path('place-order/', PlaceOrder, name='PlaceOrder'),
-    path("payment-success/orderID/transactionID/", Payment, name="Payment")
+    path("payment-success/orderID/transactionID/", Payment, name="Payment"),
+    path("logout-user/", LogoutUser, name="LogoutUser")
 ]
 
 if settings.DEBUG:

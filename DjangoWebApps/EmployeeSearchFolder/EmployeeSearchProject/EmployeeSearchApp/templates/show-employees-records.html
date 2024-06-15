@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Employees Records</title>
+</head>
+<body>
+    <table border = "2">
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        {% for employee_record in employee_records %}
+        <tr>
+            <td>{{employee_record.empid}}</td>
+            <td>{{employee_record.fname}}</td>
+            <td>{{employee_record.lname}}</td>
+            <td>{{employee_record.age}}</td>
+            <td>{{employee_record.address}}</td>
+        </tr>
+        {% endfor %}
+    </table><br><br>
+    <a href="{% url 'RegisterEmployee' %}">Register a new employee.</a><br><br>
+    <form id="SearchNameStartsWithForm" method="GET" onsubmit="nameStartsWithFunction()">
+        <input type="search" placeholder="SearchNameStartsWith" name="SearchNameStartsWith">
+        <button type="submit">Search</button>
+    </form>
+    <form id="SearchNameContainsForm" method="GET" onsubmit="nameContainsFunction()">
+        <input type="search" placeholder="SearchNameContains" name="SearchNameContains">
+        <button type="submit">Search</button>
+    </form>
+    <form id="SearchAgeLessThanEqualToForm" method="GET" onsubmit="ageLessThanEqualToFunction()">
+        <input type="search" placeholder="SearchAgeLessThanEqualTo" name="SearchAgeLessThanEqualTo">
+        <button type="submit">Search</button>
+    </form>
+
+    <script>
+        function nameStartsWithFunction()
+        {
+            var new_action_source = "../name-starts-with/" + document.getElementsByName("SearchNameStartsWith")[0].value;
+            var starts_with_form = document.getElementById('SearchNameStartsWithForm');
+            console.log(new_action_source)
+            starts_with_form.action = new_action_source ;
+        }
+
+        function nameContainsFunction()
+        {
+            var new_action_source = "../name-contains/" + document.getElementsByName("SearchNameContains")[0].value;
+            var name_contains_form = document.getElementById('SearchNameContainsForm');
+            name_contains_form.action = new_action_source ;
+        }
+
+        function ageLessThanEqualToFunction()
+        {
+            var new_action_source = "../age-lte/" + document.getElementsByName("SearchAgeLessThanEqualTo")[0].value;
+            var age_lte_form = document.getElementById('SearchAgeLessThanEqualToForm');
+            age_lte_form.action = new_action_source ;
+        }
+    </script>
+</body>
+</html>

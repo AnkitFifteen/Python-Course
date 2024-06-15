@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Search Results</title>
+</head>
+<body>
+    <table border = "2">
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        {% for employee_record in employee_records %}
+        <tr>
+            <td>{{employee_record.empid}}</td>
+            <td>{{employee_record.fname}}</td>
+            <td>{{employee_record.lname}}</td>
+            <td>{{employee_record.age}}</td>
+            <td>{{employee_record.address}}</td>
+        </tr>
+        {% endfor %}
+    </table><br><br>
+    <a href="{% url 'ViewEmployees' %}">Go back!</a><br><br>
+</body>
+</html>

@@ -189,4 +189,8 @@ def Payment(request, orderID, transactionID):
 
     return render(request, 'payment-success.html', {'ordered_products':ordered_products, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount, 'transactionID':transactionID})
 
+def LogoutUser(request):
+    del(request.session['sessionvalue'])
+    return redirect('../login-user/')
+
            
