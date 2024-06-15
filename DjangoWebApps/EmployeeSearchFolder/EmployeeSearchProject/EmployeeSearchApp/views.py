@@ -24,18 +24,16 @@ def SearchNameStartsWith(request, name):
             employee_records = query_set.all()
         return render(request, "search-results.html", {'employee_records':employee_records})
 
-def SearchNameContains(request):
+def SearchNameContains(request, name):
     if request.method == "GET":
-        search_data = request.POST.get('search_name_contains_query')
-        query_set = Employee.objects.filter(Q(fname__icontains=search_data)|Q(lname__icontains=search_data))
+        query_set = Employee.objects.filter(Q(fname__icontains=name)|Q(lname__icontains=name))
         if query_set.exists():
             employee_records = query_set.all()
         return render(request, "search-results.html", {'employee_records':employee_records})
     
-def SearchAgeLessThanEqualTo(request):
+def SearchAgeLessThanEqualTo(request, age):
     if request.method == "GET":
-        search_data = request.POST.get('search_age_less_than_equal_to_query')
-        query_set = Employee.objects.filter(age__lte=search_data)
+        query_set = Employee.objects.filter(age__lte=age)
         if query_set.exists():
             employee_records = query_set.all()
         return render(request, "search-results.html", {'employee_records':employee_records})

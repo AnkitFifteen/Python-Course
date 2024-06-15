@@ -23,7 +23,7 @@ urlpatterns = [
     path("", ViewEmployees.as_view(), name = "ViewEmployees"),
     path("show-students/", ViewEmployees.as_view(), name = "ViewEmployees"),
     path("register-student/", RegisterEmployee.as_view(), name = "RegisterEmployee"),
-    path("name-starts-with/<str:name>/", SearchNameStartsWith, name = "SearchNameStartsWith"),
-    path("name-contains/<str:name>/", SearchNameContains, name = "SearchNameContains"),
-    path("age-lte/<int:age>/", SearchAgeLessThanEqualTo, name = "SearchAgeLessThanEqualTo")
+    path("name-starts-with/", SearchNameStartsWith, name = "SearchNameStartsWith"),
+    path("name-contains/", SearchNameContains, name = "SearchNameContains"),
+    path("age-lte/", SearchAgeLessThanEqualTo, name = "SearchAgeLessThanEqualTo")
 ]
