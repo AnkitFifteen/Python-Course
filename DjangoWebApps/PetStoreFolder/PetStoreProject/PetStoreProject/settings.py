@@ -33,6 +33,8 @@ EMAIL_HOST_USER = 'retroankit@gmail.com'
 EMAIL_HOST_PASSWORD = 'futt oxfu flgt vudd'
 EMAIL_PORT = 587
 
+RAZORPAY_KEY_ID = 'rzp_test_Ozn3QNoFqZ6aG9'
+RAZORPAY_KEY_SECRET = '9F4ZjfGKRR8fzpnb2F8a9mdF'
 
 # Application definition
 
