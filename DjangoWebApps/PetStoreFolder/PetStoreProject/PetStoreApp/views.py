@@ -6,6 +6,9 @@ from django.db.models import Q
 from django.contrib.auth.hashers import make_password, check_password
 from .models import Pet, Customer, Cart, Order, Payment, OrderDetail
 from datetime import date
+import razorpay
+from django.conf import settings
+
 #from .forms import CreateTaskForm
 
 # Create your views here.
@@ -166,9 +169,33 @@ def PlaceOrder(request):
     sm = EmailMessage('Order placed', 'Order placed from pet store application. Total bill for your order is Rs.' + str(total_amount), to=['retroankit@gmail.com'])
     sm.send()
 
+     # authorize razorpay client with API Keys.
+    razorpay_client = razorpay.Client( auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET) )
+ 
+    currency = 'INR'
+    amount = 20000  # Rs. 200
+ 
+    # Create a Razorpay Order
+    razorpay_order = razorpay_client.order.create(dict(amount=amount, currency=currency, payment_capture='0'))
+ 
+    # order id of newly created order.
+    razorpay_order_id = razorpay_order['id']
+    callback_url = '../PetView'
+ 
+    # we need to pass these details to frontend.
+    context = {}
+    context['razorpay_order_id'] = razorpay_order_id
+    context['razorpay_merchant_key'] = settings.RAZORPAY_KEY_ID
+    context['razorpay_amount'] = amount
+    context['currency'] = currency
+    context['callback_url'] = callback_url
+
     return render(request, 'order-payment.html', {'orderobj':orderobj, 'session':custsession, 'cart_products':cart_products, 'total_amount':total_amount, 'products_count':products_count})
 
 def Payment(request, orderID, transactionID):
+    orderid = request.GET.get('order_id')
+    tid = request.GET.get('payment_id')
+    
     ordered_products = Order.objects.get(orderid = orderID)
     ordered_products.orderstatus = "ORDER PLACED"
 
