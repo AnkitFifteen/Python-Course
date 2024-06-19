@@ -2,4 +2,7 @@ from django.contrib import admin
 from .models import Pet
 
 # Register your models here.
-admin.site.register(Pet)
+class PetAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('name','species','breed')}
+
+admin.site.register(Pet,PetAdmin)

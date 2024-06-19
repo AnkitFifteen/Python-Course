@@ -1,6 +1,11 @@
 from django.db import models
+from django.db.models import Manager
 
 # Create your models here.
+class CustomManager(models.Manager):
+    def getdata(self,a):
+        return super().get_queryset().filter(species=a)
+    
 class Pet(models.Model):
     gender = (("Male","male"),("Female","female"))
     image = models.ImageField(upload_to="media")
@@ -11,6 +16,10 @@ class Pet(models.Model):
     gender = models.CharField(max_length=200, choices=gender)
     description = models.CharField(max_length=500)
     price = models.FloatField()
+    slug = models.SlugField(default='',null=False)
+
+    cpetobj = CustomManager()
+    objects = Manager()
 
     class Meta:
         db_table = "Pet"

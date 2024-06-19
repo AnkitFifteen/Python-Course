@@ -43,7 +43,7 @@
                         </div>
                         <h6 class="text-success">Free shipping</h6>
                         <div class="d-flex flex-column mt-4">
-                            <a href="{% url 'PetDetails' pet.pk %}" class="btn btn-primary btn-sm active" role="button">
+                            <a href="../pet-details/{{ pet.slug }}/" class="btn btn-primary btn-sm active" role="button">
                                 Details
                             </a>
                             <form method = "POST" action="{% url 'AddToCart' %}">

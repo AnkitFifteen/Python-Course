@@ -19,23 +19,24 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from PetStoreApp.views import ViewPets, SearchPets, RegisterUser, LoginUser, PetDetails, AddToCart, ViewCart, ChangeQuantity, OrderCheckout, PlaceOrder, Payment, LogoutUser
+from PetStoreApp.views import ViewPets, SearchPets, RegisterUser, LoginUser, PetDetails, AddToCart, ViewCart, ChangeQuantity, OrderCheckout, PlaceOrder, Payment, LogoutUser, PetViewCustomManagerFunction
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", LoginUser, name = 'LoginUser'),
     path("view-pets/", ViewPets.as_view(), name = "ViewPets"),
+    path('pet-by-category/', PetViewCustomManagerFunction, name='PetByCategory'),
     path("search-pets/", SearchPets, name = 'SearchPets'),
     path("register-user/", RegisterUser, name = 'RegisterUser'),
     path("login-user/", LoginUser, name = 'LoginUser'),
-    path("pet-details/<int:pk>/", PetDetails.as_view(), name = 'PetDetails'),
+    path("pet-details/<slug:slug>/", PetDetails.as_view(), name = 'PetDetails'),
     path("add-to-cart/", AddToCart, name = 'AddToCart'),
     path("view-cart/", ViewCart, name = 'ViewCart'),
     path('change-quantity/', ChangeQuantity, name='ChangeQuantity'),
     path('order-checkout/', OrderCheckout, name='OrderCheckout'),
     path('place-order/', PlaceOrder, name='PlaceOrder'),
     path("payment-success/orderID/transactionID/", Payment, name="Payment"),
-    path("logout-user/", LogoutUser, name="LogoutUser")
+    path("logout-user/", LogoutUser, name="LogoutUser"),
 ]
 
 if settings.DEBUG:

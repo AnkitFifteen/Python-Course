@@ -28,6 +28,14 @@ class PetDetails(DetailView):
     template_name = "pet-details.html"
     context_object_name = "pet"
 
+class PetViewCustomManager(ListView):
+    template_name = 'view-pets.html'
+    context_object_name = 'pet_records'
+
+def PetViewCustomManagerFunction(request):
+    pet_records = Pet.cpetobj.getdata('Canis lupus familiaris')
+    return render(request,'view-pets.html',{'pet_records':pet_records})  
+
 def SearchPets(request):
     if request.method == "POST":
         search_data = request.POST.get('searchquery')
