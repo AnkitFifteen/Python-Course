@@ -33,7 +33,7 @@ class PetViewCustomManager(ListView):
     context_object_name = 'pet_records'
 
 def PetViewCustomManagerFunction(request):
-    pet_records = Pet.cpetobj.getdata('Canis lupus familiaris')
+    pet_records = Pet.cpetobj.getdata('Cat')
     return render(request,'view-pets.html',{'pet_records':pet_records})  
 
 def SearchPets(request):
