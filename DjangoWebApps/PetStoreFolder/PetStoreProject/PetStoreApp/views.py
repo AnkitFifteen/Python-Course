@@ -144,6 +144,11 @@ def OrderCheckout(request):
             total_amount += product.totalamount
         return render(request,'order-checkout.html',{'cart_products':cart_products, 'total_amount':total_amount})
     
+
+def PlacePayUOrder(request):
+    return render(request, 'place-payu-order.html')
+
+
 def PlaceOrder(request):
     first_name = request.POST.get('firstName')
     last_name = request.POST.get('lastName')
