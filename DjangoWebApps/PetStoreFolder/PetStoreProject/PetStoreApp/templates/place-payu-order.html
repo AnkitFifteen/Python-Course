@@ -6,19 +6,49 @@
     <title>Place PayU Order</title>
 </head>
 <body>
-    <form action='https://test.payu.in/_payment' method='post'>
-        <input type="hidden" name="key" value="JP***g" />
-        <input type="hidden" name="txnid" value="t6svtqtjRdl4ws" />
-        <input type="hidden" name="productinfo" value="iPhone" />
-        <input type="hidden" name="amount" value="10" />
-        <input type="hidden" name="email" value="test@gmail.com" />
-        <input type="hidden" name="firstname" value="Ashish" />
+    <form action='https://test.payu.in/_payment' method='post' id="PayU">
+		<input type="hidden" name="key" id="key" value="JPM7Fg" />
+        <input type="hidden" name="txnid" id="txnid" value="t6svtqtjRdl4ws" />
+        <input type="hidden" name="productinfo" id="productinfo" value="iPhone" />
+        <input type="hidden" name="amount" id="amount" value="10" />
+        <input type="hidden" name="email" id="email" value="test@gmail.com" />
+        <input type="hidden" name="firstname" id="firstname" value="Ashish" />
         <input type="hidden" name="lastname" value="Kumar" />
         <input type="hidden" name="surl" value="https://apiplayground-response.herokuapp.com/" />
         <input type="hidden" name="furl" value="https://apiplayground-response.herokuapp.com/" />
-        <input type="hidden" name="phone" value="9988776655” />
-        <input type="hidden" name="hash" value="eabec285da28fd0e3054d41a4d24fe9f7599c9d0b66646f7a9984303fd6124044b6206daf831e9a8bda28a6200d318293a13d6c193109b60bd4b4f8b09c90972" />
-        <input type="submit" value="submit"> 
+        <input type="hidden" name="phone" value="9988776655" />
+        <input type="hidden" name="hash" id="hash" value="28b94449226e9a9f29069b6f901f9d73781b1d8925983a8e9464830abfdffd71d5d46c64bd7aecc7ac7fa633322f785ab9c8c295fb6409dfc3478228aaace520" />
+        <input type="submit" value="submit" onclick="setHash()"> 
     </form>
+	<script>
+		function sha512(str) 
+		{
+		  return crypto.subtle.digest("SHA-512", new TextEncoder("utf-8").encode(str)).then(buf => 
+		  {
+			return Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
+		  });
+		}
+
+		async function setHash() 
+		{
+			var key = "JPM7Fg"
+			txnid = document.getElementById("txnid").value
+			productinfo = document.getElementById("productinfo").value
+			amount = document.getElementById("amount").value
+			email = document.getElementById("email").value
+			firstname = document.getElementById("firstname").value
+			var salt = "TuxqAugd"
+			
+			let stringToHash = key.concat("|", txnid, "|", amount, "|", productinfo, "|", firstname, "|", email, "|||||||||||", salt);
+			
+			sha512HashValue = sha512(stringToHash).then(x => console.log(x));
+			const sha512Hash = await Promise.all(promises);
+			//document.forms["PayU"]["hash"].value = sha512HashValue;
+			//document.querySelector('input[name="hash"]').value = sha512HashValue
+			//document.getElementById("hash").value = sha512HashValue;
+			// prints: 4dc43467fe9140f217821252f94be94e49f963eed1889bceab83a1c36ffe3efe87334510605a9bf3b644626ac0cd0827a980b698efbc1bde75b537172ab8dbd0
+		}
+		window.onload = setHash;
+	</script>
 </body>
 </html>
